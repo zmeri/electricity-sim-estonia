@@ -38,16 +38,16 @@ The overall system cost is calculated in the `calc_cost <https://github.com/zmer
 Oil shale
 ~~~~~~~~~
 The levelized cost of oil shale power plants is estimated in the `cost_os <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L10>`_ function. Here are the main parameters used in the calculations:
-* CO\ :sub:`2` capture level = `0.9 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L14>`_
-* Mean CO\ :sub:`2` emission factor = `0.930 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L15>`_ tonne CO\ :sub:`2`\ /MWh
-* Mean operation, maintenance, and fuel cost = `20 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L16>`_ EUR/MWh
-* Mean cost of CO\ :sub:`2` credits = `40 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L18>`_ tonne CO\ :sub:`2`\ /MWh
-* Plant lifetime = `35 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L22>`_ years
-* Construction time = `4 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L23>`_ years
-* Mean overnight construction cost = `1.87e6 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L24>`_ EUR/MW
-* Mean cost of CCS = `63 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L27>`_ EUR/tonne CO\ :sub:`2`
-* Mean cost of CCS (next gen) = `37 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L28>`_ EUR/tonne CO\ :sub:`2`
-* Mean cost of CO\ :sub:`2` transport and storage = `25 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L26>`_ EUR/tonne CO\ :sub:`2`
+ * CO\ :sub:`2` capture level = `0.9 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L14>`_
+ * Mean CO\ :sub:`2` emission factor = `0.930 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L15>`_ tonne CO\ :sub:`2`\ /MWh
+ * Mean operation, maintenance, and fuel cost = `20 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L16>`_ EUR/MWh
+ * Mean cost of CO\ :sub:`2` credits = `40 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L18>`_ tonne CO\ :sub:`2`\ /MWh
+ * Plant lifetime = `35 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L22>`_ years
+ * Construction time = `4 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L23>`_ years
+ * Mean overnight construction cost = `1.87e6 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L24>`_ EUR/MW
+ * Mean cost of CCS = `63 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L27>`_ EUR/tonne CO\ :sub:`2`
+ * Mean cost of CCS (next gen) = `37 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L28>`_ EUR/tonne CO\ :sub:`2`
+ * Mean cost of CO\ :sub:`2` transport and storage = `25 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L26>`_ EUR/tonne CO\ :sub:`2`
 
 Shale gas
 ~~~~~~~~~
