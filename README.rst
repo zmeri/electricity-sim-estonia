@@ -74,7 +74,7 @@ The levelized cost of solar panels is estimated in the `cost_solar <https://gith
 
 *  Mean operating costs = `17.8 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L129>`_ EUR/MWh
 *  Plant lifetime = `25 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L127>`_ years
-*  Mean overnight construction cost = `1199.907800610841 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L128>`_ EUR/MW
+*  Mean overnight construction cost = `1199.91 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L128>`_ EUR/MW
 When simulating the cost of the grid as a whole, the additional costs of `grid improvements <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L134>`_ needed for renewables was also included, as has been described by `Ueckerdt et al. (2013)`_. The cost of grid improvements also added to `offshore wind <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L166>`_ in the simulations.
 
 Nuclear
@@ -86,7 +86,7 @@ The levelized cost of a nuclear plant with a small modular reactor is estimated 
 *  Mean fuel costs (including disposal) = `6 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L187>`_ EUR/MWh
 *  Plant lifetime = `60 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L182>`_ years
 *  Construction time = `7 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L183>`_ years
-*  Mean overnight construction cost = `4402.817694231699 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L186>`_ EUR/MW
+*  Mean overnight construction cost = `4402.82 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L186>`_ EUR/MW
 
 Underground pumped hydro storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
