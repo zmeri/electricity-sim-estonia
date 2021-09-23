@@ -39,6 +39,7 @@ Oil shale
 ~~~~~~~~~
 
 The levelized cost of oil shale power plants is estimated in the `cost_os <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L10>`_ function. Here are the main parameters used in the calculations:
+
 *  CO\ :sub:`2` capture level = `0.9 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L14>`_
 *  Mean CO\ :sub:`2` emission factor = `0.930 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L15>`_ tonne CO\ :sub:`2`\ /MWh
 *  Mean operation, maintenance, and fuel cost = `20 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L16>`_ EUR/MWh
@@ -54,6 +55,7 @@ Shale gas
 ~~~~~~~~~
 
 The levelized cost of shale gas power plants is estimated in the `cost_os_gas <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L48>`_ function. Here are the main parameters used in the calculations:
+
 *  CO\ :sub:`2` capture level = `0.9 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L52>`_
 *  Mean CO\ :sub:`2` emission factor = `0.2 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L53>`_ tonne CO\ :sub:`2`\ /MWh
 *  Mean operation, maintenance, and fuel cost = `10 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L54>`_ EUR/MWh
@@ -69,6 +71,7 @@ Solar
 ~~~~~
 
 The levelized cost of solar panels is estimated in the `cost_solar <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L126>`_ function. Here are the main parameters used in the calculations:
+
 *  Mean operating costs = `17.8 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L129>`_ EUR/MWh
 *  Plant lifetime = `25 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L127>`_ years
 *  Mean overnight construction cost = `1199.907800610841 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L128>`_ EUR/MW
@@ -78,6 +81,7 @@ Nuclear
 ~~~~~~~
 
 The levelized cost of a nuclear plant with a small modular reactor is estimated in the `cost_nuclear <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L178>`_ function. Here are the main parameters used in the calculations:
+
 *  Mean operating and maintenance costs = `10 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L189>`_ EUR/MWh
 *  Mean fuel costs (including disposal) = `6 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L187>`_ EUR/MWh
 *  Plant lifetime = `60 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L182>`_ years
@@ -88,6 +92,7 @@ Underground pumped hydro storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Underground pumped hydro storage was the electricity storage technology selected for use in the simulations due to its low cost compared to other storage technologies and due to the maturity of the technology. The levelized cost of an underground pumped hydro facility is estimated in the `cost_storage_uphes <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L203>`_ function. Here are the main parameters used in the calculations:
+
 *  Plant lifetime = `60 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L211>`_ years
 *  Construction time = `8 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L212>`_ years
 *  Mean overnight construction cost for conversion equipment (e.g. pumps and turbines) = `1200 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L218>`_ EUR/MW
@@ -109,6 +114,7 @@ Analyses
 --------
 
 Several functions were written to perform the following analyses for this study:
+
 *  To investigate how `storage <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L471>`_ affects the performance of a grid consisting almost entirely of wind turbines
 *  To `compare <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L537>`_ likely low-emission scenarios in Estonia
 *  To determine how the cost and net surplus change with increasing `penetration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L658>`_ of wind power
