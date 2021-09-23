@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Renewables only",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 3800,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 0,
+    "shale gas": 0
+  },
+  {
+    "name": "Renewables - 5 GWh storage",
+    "storage_power": 500,
+    "storage_energy": 5000,
+    "wind": 3800,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 0,
+    "shale gas": 0
+  },
+  {
+    "name": "Renewables - 20 GWh storage",
+    "storage_power": 800,
+    "storage_energy": 20000,
+    "wind": 3800,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 0,
+    "shale gas": 0
+  },
+  {
+    "name": "Renewables - 100 GWh storage",
+    "storage_power": 800,
+    "storage_energy": 100000,
+    "wind": 3800,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 0,
+    "shale gas": 0
+  },
+  {
+    "name": "Oil shale with CCS",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 400,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 915,
+    "shale gas": 180
+  },
+  {
+    "name": "Nuclear",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 400,
+    "solar": 40,
+    "nuclear": 970,
+    "oil shale": 0,
+    "shale gas": 0
+  },
+  {
+    "name": "Renewables with only oil shale",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 1900,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 600,
+    "shale gas": 0
+  },
+  {
+    "name": "Renewables with oil shale and shale gas",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 1900,
+    "solar": 40,
+    "nuclear": 0,
+    "oil shale": 415,
+    "shale gas": 180
+  },
+  {
+    "name": "Renewables with nuclear",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 1900,
+    "solar": 40,
+    "nuclear": 530,
+    "oil shale": 0,
+    "shale gas": 0
+  },
+  {
+    "name": "Renewables, nuclear, and shale gas",
+    "storage_power": 0,
+    "storage_energy": 0,
+    "wind": 1900,
+    "solar": 40,
+    "nuclear": 365,
+    "oil shale": 0,
+    "shale gas": 180
+  }
+]
