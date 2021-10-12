@@ -49,7 +49,7 @@ def simulation(caps, show_plot=False, plot_example=False):
 
         years = ['2020', '2019', '2018', '2017', '2016']
         for yr in years:
-            comp = pd.read_csv('electricity-production and consumption_{}.csv'.format(yr), delimiter=';')
+            comp = pd.read_csv('data/electricity-production and consumption_{}.csv'.format(yr), delimiter=';')
             plt.plot((comp['Ajatempel (UTC)'] - comp['Ajatempel (UTC)'].iloc[0]) / SECONDS_IN_DAY, comp['Tarbimine'], alpha=0.5, label='Actual demand {}'.format(yr))
 
         # plt.plot(t / SECONDS_IN_DAY, price, color='purple', label='Price')
@@ -63,7 +63,7 @@ def simulation(caps, show_plot=False, plot_example=False):
         plt.subplots_adjust(right=0.7)
         plt.legend(frameon=False, bbox_to_anchor=(1.5, 0.5), loc='center right')
         # plt.legend(frameon=False, loc='lower left')
-        # plt.savefig("demand_simulation.png", dpi=400)
+        # plt.savefig("figures/demand_simulation.png", dpi=400)
         plt.show()
 
     # calculate metrics
@@ -112,6 +112,17 @@ def surplus_duration(caps, i):
     probs, surplus = probability_dist(surplus)
     return i * np.ones_like(probs), probs, surplus
 
+def demand_duration(i):
+    rng = np.random.default_rng()
+    SECONDS_IN_YR = 31536000
+    time_step = 10 # seconds
+    t = np.arange(0, SECONDS_IN_YR / time_step) * time_step # current second in the year
+
+    demanded = demand(t, rng)
+
+    probs, demanded = probability_dist(demanded)
+    return i * np.ones_like(probs), probs, demanded
+
 def production(t, caps, demanded, rng, plot_example=False):
     npts = t.shape[0]
     SECONDS_IN_YR = 31536000
@@ -145,7 +156,7 @@ def production(t, caps, demanded, rng, plot_example=False):
 
     # wind turbines
     ncoef = 50000
-    coef = pd.read_csv('wind_dct_coefficients.csv', delimiter=';') # loading the parameters for the coefficients
+    coef = pd.read_csv('data/wind_dct_coefficients.csv', delimiter=';') # loading the parameters for the coefficients
     coef = coef.head(ncoef)
 
     y2 = rng.normal(coef['mean'], coef['stdev'], ncoef)
@@ -230,7 +241,7 @@ def production(t, caps, demanded, rng, plot_example=False):
         plt.xlim([30, 35])
         plt.legend(frameon=False, loc=1, bbox_to_anchor=(1.25, 1.0))
         plt.subplots_adjust(right=0.82)
-        plt.savefig('simulation_example', dpi=400)
+        plt.savefig('figures/simulation_example', dpi=400)
         plt.show()
 
     annual_prod = {}
@@ -252,7 +263,7 @@ def calc_price(t, rng):
     SECONDS_IN_DAY = 86400
     time_step = SECONDS_IN_YR / npts
 
-    coef = pd.read_csv('price_dct_coefficients.csv', delimiter=';') # loading the parameters for the coefficients
+    coef = pd.read_csv('data/price_dct_coefficients.csv', delimiter=';') # loading the parameters for the coefficients
 
     ncoef = coef.shape[0]
     y = rng.normal(coef['mean'], coef['stdev'], ncoef)
@@ -269,7 +280,7 @@ def demand(t, rng):
     ncoef = 5000 # we found that only the first 5000 or so coefficients actually had a meaningful impact
 
     # loading the parameters for the coefficients
-    coef = pd.read_csv('demand_dct_coefficients.csv', delimiter=';')
+    coef = pd.read_csv('data/demand_dct_coefficients.csv', delimiter=';')
     coef = coef.head(ncoef)
 
     y = rng.normal(coef['mean'], coef['stdev'], ncoef)
@@ -367,12 +378,12 @@ def monte_carlo(npts, caps, processes=3):
     return total_production, total_excess, total_shortage, total_unused, net_surplus, cost, dif_from_arbitrage
 
 
-def monte_carlo_surplus_duration(npts, caps, processes=3):
+def monte_carlo_surplus_duration(npts, istart, caps, processes=3):
     run = []
     probs = []
     surplus = []
     with multiprocessing.Pool(processes) as pool:
-        raw_results = [pool.apply_async(surplus_duration, args=(caps, i)) for i in range(npts)]
+        raw_results = [pool.apply_async(surplus_duration, args=(caps, i)) for i in range(istart, istart + npts)]
         for r in raw_results:
             try:
                 result = r.get(timeout=90)
@@ -388,6 +399,27 @@ def monte_carlo_surplus_duration(npts, caps, processes=3):
     return run, probs, surplus
 
 
+def monte_carlo_demand_duration(npts, istart, processes=3):
+    run = []
+    probs = []
+    demand = []
+    with multiprocessing.Pool(processes) as pool:
+        raw_results = [pool.apply_async(demand_duration, args=(i,)) for i in range(istart, istart + npts)]
+        for r in raw_results:
+            try:
+                result = r.get(timeout=90)
+                run.append(result[0])
+                probs.append(result[1])
+                demand.append(result[2])
+            except multiprocessing.TimeoutError:
+                pass
+
+    run = np.vstack(run).flatten()
+    probs = np.vstack(probs).flatten()
+    demand = np.vstack(demand).flatten()
+    return run, probs, demand
+
+
 def find_demand_coefficients():
     # perform Discrete Cosine Transform on actual demand data from the past 5 years and calculate the mean and standard deviation of each DCT coefficient.
     SECONDS_IN_YR = 31536000
@@ -397,7 +429,7 @@ def find_demand_coefficients():
 
     y = np.zeros((t.shape[0], 5))
     for i, yr in enumerate(years):
-        comp = pd.read_csv('electricity-production and consumption_{}.csv'.format(yr), delimiter=';') # actual data from @eleringasEleringLive
+        comp = pd.read_csv('data/electricity-production and consumption_{}.csv'.format(yr), delimiter=';') # actual data from @eleringasEleringLive
         comp['second'] = 0
         comp.loc[:, 'second'] = (comp['Ajatempel (UTC)'] - comp['Ajatempel (UTC)'].iloc[0])
         spline = interpolate.splrep(comp['second'], comp['Tarbimine'], s=0)
@@ -406,7 +438,7 @@ def find_demand_coefficients():
 
     res = np.hstack((np.mean(y, axis=1).reshape(-1,1), np.std(y, axis=1).reshape(-1,1)))
     df = pd.DataFrame(data=res, columns=['mean', 'stdev'])
-    df.to_csv('demand_dct_coefficients.csv', sep=';')
+    df.to_csv('data/demand_dct_coefficients.csv', sep=';')
 
 
 def find_wind_coefficients():
@@ -419,7 +451,7 @@ def find_wind_coefficients():
 
     y = np.zeros((t.shape[0], 5))
     for i, yr in enumerate(years):
-        comp = pd.read_csv('electricity-production-wind parks_{}.csv'.format(yr), delimiter=';') # actual data from @eleringasEleringLive
+        comp = pd.read_csv('data/electricity-production-wind parks_{}.csv'.format(yr), delimiter=';') # actual data from @eleringasEleringLive
         comp['second'] = 0
         comp.loc[:, 'second'] = (comp['Ajatempel (UTC)'] - comp['Ajatempel (UTC)'].iloc[0])
         spline = interpolate.splrep(comp['second'], comp['Tuuleparkide toodang'], s=0)
@@ -428,7 +460,7 @@ def find_wind_coefficients():
 
     res = np.hstack((np.mean(y, axis=1).reshape(-1,1), np.std(y, axis=1).reshape(-1,1)))
     df = pd.DataFrame(data=res, columns=['mean', 'stdev'])
-    df.to_csv('wind_dct_coefficients.csv', sep=';')
+    df.to_csv('data/wind_dct_coefficients.csv', sep=';')
 
 
 def find_price_coefficients():
@@ -477,7 +509,7 @@ def storage_effect(run_simulation=True):
     storage_powers = storage_powers.flatten()
     wind_caps = 3800
 
-    outfile = 'storage_effect.csv'
+    outfile = 'data/storage_effect.csv'
 
     if run_simulation:
         if not os.path.exists(outfile):
@@ -506,7 +538,7 @@ def storage_effect(run_simulation=True):
     df.loc[df['Storage energy'] == 0, 'Storage energy'] = 1
     grp = df.groupby(['Storage energy', 'Storage power']).mean()
     grp.reset_index(inplace=True)
-    grp.to_csv('storage_averages.csv', sep=';')
+    grp.to_csv('data/storage_averages.csv', sep=';')
 
     fig, axs = plt.subplots(3, 1, figsize=(9,14))
 
@@ -530,7 +562,7 @@ def storage_effect(run_simulation=True):
 
     axs[-1].set_xlabel('Storage capacity (MWh)')
     plt.subplots_adjust(left=0.17)
-    plt.savefig('renewable_storage_ratios', dpi=400)
+    plt.savefig('figures/renewable_storage_ratios', dpi=400)
     plt.show()
 
 
@@ -538,7 +570,7 @@ def compare_systems(run_simulation=True):
     with open('systems.json', 'r') as file:
         systems = json.load(file) # all capacities in MW, except for storage_energy which has units of MWh
 
-    outfile = 'compare_systems.csv'
+    outfile = 'data/compare_systems.csv'
     nruns = 3003
 
     if run_simulation:
@@ -606,7 +638,8 @@ def compare_systems(run_simulation=True):
     axs[2].set_xticklabels([])
     axs[-1].set_xticklabels(labels, rotation=90)
     plt.subplots_adjust(bottom=0.2)
-    plt.savefig('sim_results', dpi=400)
+    plt.tight_layout()
+    plt.savefig('figures/sim_results', dpi=400)
     plt.show()
 
 def calc_average_probability(df, name):
@@ -616,22 +649,28 @@ def calc_average_probability(df, name):
     return df1['Probability'], df1['Surplus']
 
 def surplus_duration_curve(run_simulation=True):
+    HRS_PER_YEAR = 8760 # h/yr
+
     with open('systems.json', 'r') as file:
         systems = json.load(file) # all capacities in MW, except for storage_energy which has units of MWh
 
-    outfile = 'surplus_duration_curve.csv'
+    outfile = 'data/surplus_duration_curve.csv'
     nruns = 2900
 
     if run_simulation:
+        istart = 0
         if not os.path.exists(outfile):
             with open(outfile, 'a+') as f:
                 f.seek(0)
                 f.truncate()
                 f.write('System;Run;Probability;Surplus\n')
+        else:
+            tmp = pd.read_csv(outfile, delimiter=';')
+            istart = int(tmp['Run'].max()) + 1
 
         for i, caps in enumerate(systems):
             print('Performing simulation for {}'.format(caps['name']))
-            run, probs, surplus = monte_carlo_surplus_duration(nruns, caps)
+            run, probs, surplus = monte_carlo_surplus_duration(nruns, istart, caps)
 
             with open(outfile, 'a+') as f:
                 for i in range(run.shape[0]):
@@ -645,13 +684,70 @@ def surplus_duration_curve(run_simulation=True):
     colors = ['#7dc888', '#489b48', '#267b26', '#005e0d', '#b50d0d', '#4242e3', '#6a2525', '#dc961b', '#a812cd', '#15d4c9']
     for i, caps in enumerate(systems):
         probability, surplus = calc_average_probability(df, caps['name'])
-        axs.plot(probability, surplus, color=colors[i], label='\n'.join(wrap(caps['name'], 20)))
+        surplus = np.flip(surplus)
+        if caps['name'] == "Nuclear":
+            axs.plot(probability / 100 * HRS_PER_YEAR, surplus, color=colors[i], linestyle='dashed', label='\n'.join(wrap(caps['name'], 20)))
+        else:
+            axs.plot(probability / 100 * HRS_PER_YEAR, surplus, color=colors[i], label='\n'.join(wrap(caps['name'], 20)))
 
-    axs.set_xlabel('Fraction of the year (%)')
-    axs.set_ylabel('Surplus/shortfall (MW)')
+    axs.set_xlabel('Hours of the year')
+    axs.set_ylabel('Surplus/deficit (MW)')
+    axs.set_xlim(0, HRS_PER_YEAR)
     axs.legend(frameon=False, bbox_to_anchor=(1.6, 0.5), loc='center right')
     plt.subplots_adjust(right=0.65)
-    plt.savefig('surplus_duration_curve', dpi=400)
+    plt.savefig('figures/surplus_duration_curve', dpi=400)
+    plt.show()
+
+
+def demand_duration_curve(run_simulation=True):
+    HRS_PER_YEAR = 8760 # h/yr
+
+    outfile = 'data/demand_duration_curve.csv'
+    nruns = 3
+
+    if run_simulation:
+        istart = 0
+        if not os.path.exists(outfile):
+            with open(outfile, 'a+') as f:
+                f.seek(0)
+                f.truncate()
+                f.write('Run;Probability;Demand\n')
+        else:
+            tmp = pd.read_csv(outfile, delimiter=';')
+            istart = int(tmp['Run'].max()) + 1
+
+        print('Generating demand curves')
+        run, probs, demand = monte_carlo_demand_duration(nruns, istart)
+
+        with open(outfile, 'a+') as f:
+            for i in range(run.shape[0]):
+                f.write(';'.join([str(run[i]), str(probs[i]), str(demand[i])]) + '\n')
+
+    # creating plot
+    df = pd.read_csv(outfile, delimiter=';')
+
+    fig, axs = plt.subplots()
+
+    runs = df['Run'].unique().tolist()
+    for r in runs:
+        demand = np.flip(df.loc[df.Run == r, 'Demand'])
+        axs.plot(df.loc[df.Run == r, 'Probability'] / 100 * HRS_PER_YEAR, demand, color='grey', alpha=0.5)
+
+    years = ['2020', '2019', '2018', '2017', '2016']
+    for yr in years:
+        comp = pd.read_csv('data/electricity-production and consumption_{}.csv'.format(yr), delimiter=';')
+        probability, demand = probability_dist(comp['Tarbimine'])
+        demand = np.flip(demand)
+        axs.plot(probability / 100 * HRS_PER_YEAR, demand, linewidth=2, label='Actual data ({})'.format(yr))
+
+    axs.plot([], [], color="grey", label='Generated data') # Add label for generated data
+
+    axs.set_xlabel('Hours of the year')
+    axs.set_ylabel('Demand (MW)')
+    axs.set_xlim(0, HRS_PER_YEAR)
+    axs.legend(frameon=False)
+    plt.tight_layout()
+    plt.savefig('figures/demand_duration_curve', dpi=400)
     plt.show()
 
 
@@ -662,7 +758,7 @@ def wind_penetration_cost(run_simulation=True):
     shale_gas_caps = 180 # MW_electric
     nruns = 2002
 
-    outfile = 'wind_penetration.csv'
+    outfile = 'data/wind_penetration.csv'
 
     if run_simulation:
         if not os.path.exists(outfile):
@@ -723,16 +819,16 @@ def wind_penetration_cost(run_simulation=True):
     df = pd.read_csv(outfile, delimiter=';')
     grp = df.groupby(['Wind capacity', 'Nuclear capacity', 'Oil shale capacity']).mean()
     grp.reset_index(inplace=True)
-    grp.to_csv('wind_penetration_averages.csv', sep=';')
+    grp.to_csv('data/wind_penetration_averages.csv', sep=';')
 
-    fig, axs = plt.subplots(2, 1, figsize=(7,13))
+    fig, axs = plt.subplots(2, 1, figsize=(7,11))
     secax_top = axs[0].secondary_xaxis('top', functions=(cap_to_percent, percent_to_cap))
     secax_bottom = axs[1].secondary_xaxis('top', functions=(cap_to_percent, percent_to_cap))
 
     axs[0].scatter(grp.loc[grp['Oil shale capacity'] == 0, 'Wind capacity'], grp.loc[grp['Oil shale capacity'] == 0, 'Average cost'], label='Nuclear')
-    axs[0].scatter(grp.loc[grp['Nuclear capacity'] == 0, 'Wind capacity'], grp.loc[grp['Nuclear capacity'] == 0, 'Average cost'], label='Oil shale and shale gas')
+    axs[0].scatter(grp.loc[grp['Nuclear capacity'] == 0, 'Wind capacity'], grp.loc[grp['Nuclear capacity'] == 0, 'Average cost'], label='Oil shale and pyrolysis gas')
     axs[1].scatter(grp.loc[grp['Oil shale capacity'] == 0, 'Wind capacity'], grp.loc[grp['Oil shale capacity'] == 0, 'Net surplus'] / 1000, label='Nuclear')
-    axs[1].scatter(grp.loc[grp['Nuclear capacity'] == 0, 'Wind capacity'], grp.loc[grp['Nuclear capacity'] == 0, 'Net surplus'] / 1000, label='Oil shale and shale gas')
+    axs[1].scatter(grp.loc[grp['Nuclear capacity'] == 0, 'Wind capacity'], grp.loc[grp['Nuclear capacity'] == 0, 'Net surplus'] / 1000, label='Oil shale and pyrolysis gas')
 
     axs[1].set_xlabel('Wind capacity (MW)')
     axs[0].set_ylabel('Cost (EUR/MWh)')
@@ -740,7 +836,8 @@ def wind_penetration_cost(run_simulation=True):
     secax_top.set_xlabel('Wind percentage of total generation (%)')
 
     plt.legend(frameon=False)
-    plt.savefig('wind_penetration', dpi=400)
+    plt.tight_layout()
+    plt.savefig('figures/wind_penetration', dpi=400)
     plt.show()
 
 
@@ -749,7 +846,8 @@ if __name__ == '__main__':
     # find_wind_coefficients()
     # find_price_coefficients()
     # single_sim(show_plot=False, plot_example=True)
-    # storage_effect(run_simulation=True)
+    # storage_effect(run_simulation=False)
     compare_systems(run_simulation=False)
-    # wind_penetration_cost(run_simulation=True)
-    # surplus_duration_curve(run_simulation=True)
+    # wind_penetration_cost(run_simulation=False)
+    # surplus_duration_curve(run_simulation=False)
+    # demand_duration_curve(run_simulation=False)

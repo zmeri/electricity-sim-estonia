@@ -70,7 +70,7 @@
     "shale gas": 0
   },
   {
-    "name": "Renewables with oil shale and shale gas",
+    "name": "Renewables with oil shale and pyrolysis gas",
     "storage_power": 0,
     "storage_energy": 0,
     "wind": 1900,
@@ -90,7 +90,7 @@
     "shale gas": 0
   },
   {
-    "name": "Renewables, nuclear, and shale gas",
+    "name": "Renewables, nuclear, and pyrolysis gas",
     "storage_power": 0,
     "storage_energy": 0,
     "wind": 1900,

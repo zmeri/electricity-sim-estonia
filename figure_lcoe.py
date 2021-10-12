@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import cost_models as cm
+from electric_grid_est import probability_dist
 
 def plot_lcoe(npts):
     rng = np.random.default_rng()
@@ -15,10 +16,10 @@ def plot_lcoe(npts):
     years = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
     price_list = []
     for y in years:
-        price_list.append(pd.read_csv('electricity-production and consumption_{}.csv'.format(y), delimiter=';'))
+        price_list.append(pd.read_csv('data/electricity-production and consumption_{}.csv'.format(y), delimiter=';'))
     price_ee = pd.concat(price_list, sort=False)
     price_ee = price_ee.loc[price_ee['NPS Eesti'].notna(), :]
-    price_global = pd.read_csv('electricity_prices_worldwide.csv', header=3, delimiter=';')
+    price_global = pd.read_csv('data/electricity_prices_worldwide.csv', header=3, delimiter=';')
 
     os_capacity = 600
     os_capfac = rng.normal(0.82, 0.05, npts) # @jamesCostPerformanceBaseline2019
@@ -30,6 +31,11 @@ def plot_lcoe(npts):
     gas_capfac = rng.normal(0.82, 0.05, npts)
     gas_production = gas_capacity * gas_capfac * HRS_PER_YEAR
     gas_noccs, gas_ccs_avg, gas_ccs_best = cm.cost_os_gas(npts, gas_capacity, gas_production, rng)
+
+    bio_capacity = 600
+    bio_capfac = rng.normal(0.82, 0.05, 1)
+    bio_production = bio_capacity * bio_capfac * HRS_PER_YEAR
+    bio_noccs, bio_ccs_avg, bio_ccs_best = cm.cost_biomass(npts, bio_capacity, bio_production, rng)
 
     solar_global_max = 163 * USD_TO_EUR # EUR/MWh, @irenaRenewablePowerGeneration2019 pg 13
     solar_global_min = 40 * USD_TO_EUR
@@ -74,11 +80,37 @@ def plot_lcoe(npts):
     nuclear_production = nuclear_capacity * nuclear_capfac * HRS_PER_YEAR
     nuclear = cm.cost_nuclear(npts, nuclear_capacity, nuclear_production, rng)
 
-    data = [price_ee['NPS Eesti'], price_global['residential'], os_nocredits, os_noccs, os_ccs_avg, os_ccs_best, gas_noccs, gas_ccs_avg, gas_ccs_best, solar_global_avg, solar_ee, wind_on_global_avg, wind_off_global_avg, nuclear]
-    labels = ['Wholesale price (EE)', 'Residential price (global)', 'Oil shale (no credits)', 'Oil shale (no CCS)', 'Oil shale (CCS)', 'Oil shale (next gen CCS)', 'Shale gas (no CCS)', 'Shale gas (CCS)', 'Shale gas (next gen CCS)', 'Solar panels (global)', 'Solar panels (EE)', 'Onshore wind (global)', 'Offshore wind (global)', 'Nuclear']
-    pos = [0, 0.3, 1.3, 1.6, 1.9, 2.2, 3.2, 3.5, 3.8, 4.8, 5.1, 6.1, 6.4, 7.4]
-    colors = ['grey', 'grey', '#cfb1b1', 'red', 'red', 'red', 'orange', 'orange', 'orange', '#cfb50a', '#cfb50a', '#319fe5', 'blue', 'violet']
-    fig, ax = plt.subplots(figsize=(8,8))
+    # dif = os_ccs_avg - nuclear
+    # p = sns.displot(x=dif, kind='kde')
+    # p.set(xlim=[-100,130])
+    # p.set(xlabel='LCOE erinevus (CCS - tuuma) (EUR/MWh)')
+    # p.set(ylabel='Tõenäosus (%)')
+    # p.tight_layout()
+    # p.savefig('jaotus_ccs_miinus_tuuma.png')
+    #
+    # prob, values = probability_dist(dif)
+    # plt.figure()
+    # plt.plot(prob, values)
+    # plt.xlim([0,100])
+    # plt.ylim([-100,130])
+    # plt.xlabel('Tõenäosus (%)')
+    # plt.ylabel('LCOE erinevus (CCS - tuuma) (EUR/MWh)')
+    # plt.tight_layout()
+    # plt.savefig('tõenäosus_ccs_miinus_tuuma.png')
+    # plt.show()
+
+
+    data = [price_ee['NPS Eesti'], price_global['residential'], os_nocredits, os_noccs, os_ccs_avg, os_ccs_best, gas_noccs, gas_ccs_avg, gas_ccs_best, bio_noccs, bio_ccs_avg, bio_ccs_best, solar_global_avg, solar_ee, wind_on_global_avg, wind_off_global_avg, nuclear]
+    labels = ['Wholesale price (EST)', 'Residential price (global)', 'Oil shale (no credits)',
+        'Oil shale (no CCS)', 'Oil shale (CCS)', 'Oil shale (next gen CCS)',
+        'Pyrolysis gas (no CCS)', 'Pyrolysis gas (CCS)', 'Pyrolysis gas (next CCS)',
+        'Biomass (no CCS)', 'Biomass (CCS)', 'Biomass (next gen CCS)', 'Solar panels (global)',
+        'Solar panels (EST)', 'Onshore wind (global)', 'Offshore wind (global)', 'Nuclear']
+    pos = [9.0, 8.7, 7.7, 7.4, 7.1, 6.8, 5.8, 5.5, 5.2, 4.2, 3.9, 3.6, 2.6, 2.3, 1.3, 1.0, 0]
+    colors = ['grey', 'grey', '#cfb1b1', 'red', 'red', 'red', 'orange', 'orange', 'orange',
+        '#41d055', '#41d055', '#41d055', '#cfb50a', '#cfb50a', '#319fe5', 'blue', 'violet']
+
+    fig, ax = plt.subplots(figsize=(9,10))
 
     for i, d in enumerate(data):
         if labels[i] in ['Solar panels (global)', 'Onshore wind (global)', 'Offshore wind (global)']:
@@ -91,10 +123,10 @@ def plot_lcoe(npts):
                     'whishi': maxs[labels[i]],    # Top whisker position
                 }
             ]
-            bp = ax.bxp(boxes, positions=[pos[i]], widths=0.2, patch_artist=True, showfliers=False)
+            bp = ax.bxp(boxes, positions=[pos[i]], widths=0.2, patch_artist=True, showfliers=False, vert=False)
             plt.setp(bp['medians'], color=colors[i])
         else:
-            bp = ax.boxplot(d, positions=[pos[i]], whis=[5,95], widths=0.2, patch_artist=True, showfliers=False)
+            bp = ax.boxplot(d, positions=[pos[i]], whis=[5,95], widths=0.2, patch_artist=True, showfliers=False, vert=False)
             if labels[i] == 'Nuclear (Fermi)':
                 plt.setp(bp['medians'], color=colors[i])
             else:
@@ -108,13 +140,14 @@ def plot_lcoe(npts):
 
         plt.setp(bp['whiskers'], linewidth=2.0)
 
-    ax.set_ylim([None, 210])
-    ax.set_ylabel('Cost of electricity (EUR/MWh)')
-    ax.set_xlabel('')
-    ax.set_xticklabels(labels, rotation=90)
-    plt.subplots_adjust(bottom=0.3)
-    plt.savefig('lcoe_comparison', dpi=400)
+    ax.set_xlim([None, 210])
+    ax.set_xlabel('Cost of electricity (EUR/MWh)')
+    ax.set_ylabel('')
+    ax.set_yticklabels(labels)
+    plt.subplots_adjust(left=0.3)
+    plt.tight_layout()
+    plt.savefig('figures/lcoe_comparison', dpi=400)
     plt.show()
 
 
-plot_lcoe(10000)
+plot_lcoe(1000000)
