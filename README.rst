@@ -51,10 +51,10 @@ The levelized cost of oil shale power plants is estimated in the `cost_os <https
 *  Mean cost of CCS (next gen) = `37 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L28>`_ EUR/tonne CO\ :sub:`2`
 *  Mean cost of CO\ :sub:`2` transport and storage = `25 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L26>`_ EUR/tonne CO\ :sub:`2`
 
-Shale gas
+Pyrolysis gas
 ~~~~~~~~~
 
-The levelized cost of shale gas power plants is estimated in the `cost_os_gas <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L48>`_ function. Here are the main parameters used in the calculations:
+The levelized cost of Pyrolysis gas power plants is estimated in the `cost_os_gas <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L48>`_ function. Here are the main parameters used in the calculations:
 
 *  CO\ :sub:`2` capture level = `0.9 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L52>`_
 *  Mean CO\ :sub:`2` emission factor = `0.2 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L53>`_ tonne CO\ :sub:`2`\ /MWh
@@ -117,8 +117,8 @@ Several functions were written to perform the following analyses for this study:
 
 *  To investigate how `storage <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L471>`_ affects the performance of a grid consisting almost entirely of wind turbines
 *  To `compare <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L537>`_ likely low-emission scenarios in Estonia
-*  To determine how the cost and net surplus change with increasing `penetration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L658>`_ of wind power
-*  To calculate `surplus duration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L618>`_ curves
+*  To determine how the cost and net surplus change with increasing `penetration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L666>`_ of wind power
+*  To calculate `surplus duration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L619>`_ curves
 
 License
 -------

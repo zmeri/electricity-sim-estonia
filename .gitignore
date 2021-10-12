@@ -1,6 +1,13 @@
+__pycache__/
 storage_func/build/
 storage_func/__pycache__
 storage_func/test/__pycache__
+data/demand_dct_coefficients.csv
+data/price_dct_coefficients.csv
+data/wind_dct_coefficients.csv
+data/surplus_duration_curve.csv
+data/demand_duration_curve.csv
+figures/*
 *.egg-info
 *.pytest_cache
 *.so
