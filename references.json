@@ -1,0 +1,1654 @@
+[
+  {
+    "id": "vabariigivalitsusEestiElektrimajanduseArengukava2006",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          9,
+          2
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Vabariigi Valitsus",
+        "given": ""
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006,
+          1,
+          3
+        ]
+      ]
+    },
+    "title": "Eesti elektrimajanduse arengukava 2005-2015",
+    "type": "legislation",
+    "URL": "https://www.riigiteataja.ee/aktilisa/0000/0097/9263/984718.pdf"
+  },
+  {
+    "id": "jamesCostPerformanceBaseline2019",
+    "abstract": "The U.S. Department of Energy's Office of Scientific and Technical Information",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          11,
+          16
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "James",
+        "given": "Robert E."
+      },
+      {
+        "family": "Kearins",
+        "given": "Dale"
+      },
+      {
+        "family": "Turner",
+        "given": "Marc"
+      },
+      {
+        "family": "Woods",
+        "given": "Mark"
+      },
+      {
+        "family": "Kuehn",
+        "given": "Norma"
+      },
+      {
+        "family": "Zoelle",
+        "given": "Alexander"
+      }
+    ],
+    "DOI": "10.2172/1569246",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          9,
+          24
+        ]
+      ]
+    },
+    "language": "English",
+    "number": "NETL-PUB-22638",
+    "publisher": "NETL",
+    "source": "www.osti.gov",
+    "title": "Cost and Performance Baseline for Fossil Energy Plants Volume 1: Bituminous Coal and Natural Gas to Electricity",
+    "title-short": "Cost and Performance Baseline for Fossil Energy Plants Volume 1",
+    "type": "report",
+    "URL": "https://www.osti.gov/biblio/1569246-cost-performance-baseline-fossil-energy-plants-volume-bituminous-coal-natural-gas-electricity"
+  },
+  {
+    "id": "cuiQuantifyingOperationalLifetimes2019",
+    "abstract": "A rapid transition away from unabated coal use is essential to fulfilling the Paris climate goals. However, many countries are actively building and operating coal power plants. Here we use plant-level data to specify alternative trajectories for coal technologies in an integrated assessment model. We then quantify cost-effective retirement pathways for global and country-level coal fleets to limit long-term temperature change. We present our results using a decision-relevant metric: the operational lifetime limit. Even if no new plants are built, the lifetimes of existing units are reduced to approximately 35 years in a well-below 2\u2009\u00b0C scenario or 20 years in a 1.5\u2009\u00b0C scenario. The risk of continued coal expansion, including the near-term growth permitted in some Nationally Determined Contributions (NDCs), is large. The lifetime limits for both 2\u2009\u00b0C and 1.5\u2009\u00b0C are reduced by 5 years if plants under construction come online and 10 years if all proposed projects are built.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          8,
+          24
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Cui",
+        "given": "Ryna Yiyun"
+      },
+      {
+        "family": "Hultman",
+        "given": "Nathan"
+      },
+      {
+        "family": "Edwards",
+        "given": "Morgan R."
+      },
+      {
+        "family": "He",
+        "given": "Linlang"
+      },
+      {
+        "family": "Sen",
+        "given": "Arijit"
+      },
+      {
+        "family": "Surana",
+        "given": "Kavita"
+      },
+      {
+        "family": "McJeon",
+        "given": "Haewon"
+      },
+      {
+        "family": "Iyer",
+        "given": "Gokul"
+      },
+      {
+        "family": "Patel",
+        "given": "Pralit"
+      },
+      {
+        "family": "Yu",
+        "given": "Sha"
+      },
+      {
+        "family": "Nace",
+        "given": "Ted"
+      },
+      {
+        "family": "Shearer",
+        "given": "Christine"
+      }
+    ],
+    "container-title": "Nature Communications",
+    "container-title-short": "Nat Commun",
+    "DOI": "10.1038/s41467-019-12618-3",
+    "ISSN": "2041-1723",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          10,
+          18
+        ]
+      ]
+    },
+    "language": "en",
+    "note": "Bandiera_abtest: a\nCc_license_type: cc_by\nCg_type: Nature Research Journals\nPrimary_atype: Research\nSubject_term: Climate-change mitigation;Climate-change policy;Energy infrastructure;Energy modelling;Energy policy\nSubject_term_id: climate-change-mitigation;climate-change-policy;energy-infrastructure;energy-modelling;energy-policy",
+    "number": "1",
+    "page": "4759",
+    "publisher": "Nature Publishing Group",
+    "source": "www.nature.com",
+    "title": "Quantifying operational lifetimes for coal power plants under the Paris goals",
+    "type": "article-journal",
+    "URL": "https://www.nature.com/articles/s41467-019-12618-3",
+    "volume": "10"
+  },
+  {
+    "id": "ieaAveragePowerGeneration2019",
+    "abstract": "Average power generation construction time (capacity weighted), 2010-2018 - Chart and data by the International Energy Agency.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          8,
+          24
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "IEA",
+        "given": ""
+      }
+    ],
+    "container-title": "IEA",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          11,
+          22
+        ]
+      ]
+    },
+    "language": "en-GB",
+    "title": "Average power generation construction time (capacity weighted), 2010-2018",
+    "type": "webpage",
+    "URL": "https://www.iea.org/data-and-statistics/charts/average-power-generation-construction-time-capacity-weighted-2010-2018"
+  },
+  {
+    "id": "metzIPCCSpecialReport2005",
+    "author": [
+      {
+        "family": "Metz",
+        "given": "Bert"
+      },
+      {
+        "family": "Davidson",
+        "given": "Ogunlade"
+      },
+      {
+        "family": "De Coninck",
+        "given": "Heleen"
+      },
+      {
+        "family": "Loos",
+        "given": "Manuela"
+      },
+      {
+        "family": "Meyer",
+        "given": "Leo"
+      }
+    ],
+    "event-place": "Geneva, Switzerland",
+    "issued": {
+      "date-parts": [
+        [
+          2005
+        ]
+      ]
+    },
+    "publisher": "Intergovernmental Panel on Climate Change",
+    "publisher-place": "Geneva, Switzerland",
+    "source": "Google Scholar",
+    "title": "IPCC special report on carbon dioxide capture and storage",
+    "type": "report"
+  },
+  {
+    "id": "godecPotentialIssuesCosts2017",
+    "abstract": "Numerous legal and regulatory frameworks in the U.S. and globally are acknowledging the opportunity for greenhouse gas (GHG) reductions provided by combining the long-term storage of CO2 in association with carbon dioxide enhanced oil recovery (CO2-EOR), or in implementing a CO2 storage project after completion of CO2-EOR operations. These include the U.S. Environmental Protection Agency (EPA), the International Organization for Standardization (ISO), the State of California, and the Intergovernmental Panel on Climate Change (IPCC), among many. One objective of this paper is to characterize the potential issues and estimated costs associated with adapting a CO2-EOR project to enable it to get \u201ccredit\u201d for stored CO2, as well as for converting a CO2-EOR project to a \u201cpure\u201d CO2 storage project. Several scenarios are considered in terms of the acceptable activities that a CO2-EOR operator would need to pursue to get \u201ccredit\u201d for stored CO2, as well as for what would be required for converting a CO2-EOR project to a CO2 storage project. These potential scenarios are applied to several fields currently undergoing CO2-EOR operations to approximate a \u201creal world\u201d assessment of the potential implementation of this strategy. Two facilities were assumed for this assessment, based on representative CO2-EOR projects in the Permian Basin of West Texas and Gulf Coast of the U.S. For each, two regulatory scenarios were considered for verifying and documenting CO2 storage \u2013 a Reference Case and a Stringent Case. For the cases assuming CO2 storage with CO2-EOR, only the incremental costs associated with verifying and documenting CO2 storage are considered. Twenty years of injection are assumed, with 73 million metric tons of injected and stored CO2 assumed for the Permian Basin case, and 27 million metric tons assumed for the Gulf Coast case. A ten-year post-injection site care (PISC) period is assumed. Total project expenditures for verifying/documenting CO2 storage, on the basis of total expenditures (undiscounted) per metric ton of stored CO2, equate to $1.64/metric ton in the Reference Case, and $4.18/metric ton for the Stringent Case. For the cases assuming CO2 storage after CO2-EOR, it is important to keep in mind that MRV costs represent only a portion of overall storage costs. In most cases, a large portion (in fact, the majority) of the costs associated with CO2 storage project in a converted CO2-EOR project are those associated with operating the wells, equipment, and surface facilities. For this scenario, in the Reference Case, a 10-year PISC phase is assumed, while in the Stringent Case, a 50-year PISC period is assumed. For the Permian Basin case, total project expenditures for CO2 storage after CO2-EOR $9.02/metric ton in the Reference Case, and $21.13/metric ton for the Stringent Case. For the Gulf Coast setting, total project expenditures for CO2 storage after CO2-EOR are $5.21/metric ton in the Reference Case and $12.09/metric ton for the Stringent Case. Finally, potential conflicts between USEPA requirements and state-level mineral property, resource conservation, and environmental law in the United States remain a concern, and will need to be addressed.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          2
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Godec",
+        "given": "Michael L."
+      },
+      {
+        "family": "Riestenberg",
+        "given": "David"
+      },
+      {
+        "family": "Cyphers",
+        "given": "Shawna"
+      }
+    ],
+    "collection-title": "13th International Conference on Greenhouse Gas Control Technologies, GHGT-13, 14-18 November 2016, Lausanne, Switzerland",
+    "container-title": "Energy Procedia",
+    "container-title-short": "Energy Procedia",
+    "DOI": "10.1016/j.egypro.2017.03.1870",
+    "ISSN": "1876-6102",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          7,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "7399-7414",
+    "source": "ScienceDirect",
+    "title": "Potential Issues and Costs Associated with Verifying CO2 Storage During and After CO2-EOR",
+    "type": "article-journal",
+    "URL": "http://www.sciencedirect.com/science/article/pii/S1876610217320726",
+    "volume": "114"
+  },
+  {
+    "id": "hendriksGlobalCarbonDioxide2002",
+    "author": [
+      {
+        "family": "Hendriks",
+        "given": "Chris"
+      },
+      {
+        "family": "Graus",
+        "given": "Wina"
+      },
+      {
+        "family": "Bergen",
+        "given": "Frank",
+        "non-dropping-particle": "van"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2002
+        ]
+      ]
+    },
+    "source": "Google Scholar",
+    "title": "Global carbon dioxide storage potential and costs",
+    "type": "article-journal"
+  },
+  {
+    "id": "zepCostsCO2Storage2011",
+    "author": [
+      {
+        "literal": "ZEP"
+      }
+    ],
+    "container-title": "European Technology Platform for Zero Emission Fossil Fuel Power Plants",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "source": "Google Scholar",
+    "title": "The costs of CO2 storage: Post-demonstration CCS in the EU",
+    "title-short": "The costs of CO2 storage",
+    "type": "article-journal"
+  },
+  {
+    "id": "laiLevelizedCostElectricity2017",
+    "abstract": "With the increasing technological maturity and economies of scale for solar photovoltaic (PV) and electrical energy storage (EES), there is a potential for mass-scale deployment of both technologies in stand-alone and grid-connected power systems. The challenge arises in analyzing the economic projections on complex hybrid systems utilizing PV and EES. It is well known that PV power is of diurnal and stochastic nature, and surplus electrical energy is generally available in midday during high irradiance levels. EES does not produce energy as it is not a conventional generator source. Commonly, the cost of a generating asset or the power system is evaluated by using levelized cost of electricity (LCOE). In this paper, a new metric levelized cost of delivery (LCOD) is proposed to calculate the LCOE for the EES. A review on definitions in LCOE for PV hybrid energy systems is provided. Four years of solar irradiance data from Johannesburg and the national load data from Kenya are obtained for case studies. The proposed cost calculation methods are evaluated with two types of EES, namely Vanadium redox flow battery (VRB) and Lithium-ion (Li-ion) battery. It shows that the marginal LCOE and LCOD indices can be used to assist policymakers to consider the discount rate, the type of storage technology and sizing of components in a PV-EES hybrid system.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          1
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Lai",
+        "given": "Chun Sing"
+      },
+      {
+        "family": "McCulloch",
+        "given": "Malcolm D."
+      }
+    ],
+    "container-title": "Applied Energy",
+    "container-title-short": "Applied Energy",
+    "DOI": "10.1016/j.apenergy.2016.12.153",
+    "ISSN": "0306-2619",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          3,
+          15
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "191-203",
+    "source": "ScienceDirect",
+    "title": "Levelized cost of electricity for solar photovoltaic and electrical energy storage",
+    "type": "article-journal",
+    "URL": "http://www.sciencedirect.com/science/article/pii/S030626191631933X",
+    "volume": "190"
+  },
+  {
+    "id": "siirdeEstimationCarbonEmission2011",
+    "author": [
+      {
+        "family": "Siirde",
+        "given": "A."
+      },
+      {
+        "family": "Roos",
+        "given": "I."
+      },
+      {
+        "family": "Martins",
+        "given": "A."
+      }
+    ],
+    "container-title": "Oil Shale",
+    "DOI": "10.3176/oil.2011.1S.05",
+    "issue": "1S",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "127-139",
+    "source": "Google Scholar",
+    "title": "Estimation of carbon emission factors for the estonian shale oil industry",
+    "type": "article-journal",
+    "URL": "https://kirj.ee/public/oilshale_pdf/2011/issue_1s/Oil-2011-1-127-139.pdf",
+    "volume": "28"
+  },
+  {
+    "id": "virukeemiagruppAastaraamat20152015",
+    "author": [
+      {
+        "family": "Viru Keemia Grupp",
+        "given": ""
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "language": "Estonian",
+    "publisher": "Viru Keemia Grupp",
+    "title": "Aastaraamat 2015",
+    "type": "book",
+    "URL": "https://www.vkg.ee/wp-content/uploads/2019/07/vkg-aastaraamat-est-2015-1.pdf"
+  },
+  {
+    "id": "sulgCharacterizationDifferentWood2021",
+    "abstract": "This paper provides an extended overview of the chemical characteristics of 19 \ndifferent wood species originating from Estonia. The variation of chemical composition in wood \nand bark was investigated using a variety of analytical techniques including WD-XRF, ICP-MS, \nand elemental analysis. Principal component analysis (PCA) was used to observe clustering in \nthe sample set. It revealed a clear data clustering in terms of the wood and bark samples. Wood \ncharacteristics exhibit quite narrow ranges, on the other hand the composition of wood bark \nsamples is significantly different and more distributed. The correlations and associations among \n27 chemical parameters, including 16 ash-forming elements, were studied. Several significant \npositive correlations between Cr-Ni-Fe, Ca-Sr, Al-Na-Si-Ti, K-Mg-P, Fe-Zn-Cr-Ni-Cu, Ash-Ca, \nN-S-P and O-volatile matter were found. Most of the metallic components are negatively \ncorrelated with volatile matter, C, H, O and heating value and are positively related to each other, \nor no significant correlation was identified. Results are compared to literature data and technical \nquality standards for biomass. Biomass feedstocks availability and composition for gasification \nprocess was discussed. Wood samples had higher volatiles content than in bark which is an \nindication that higher conversion rate and lower gasification temperature can be used. Spruce, \npine and black alder barks have higher fixed carbon content than other common species that may \nincrease biochar yield. Commonly available woods like Scots pine, Norway spruce, aspen, birch, \nblack alder and grey alder may considered as suitable feedstocks for gasification because of their \nlow N, S, Cl, and ash content together with high volatile matter, however, relatively high total \nheavy metals content were found from birch and grey alder barks compared to other hardwoods.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          9,
+          14
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Sulg",
+        "given": "Mari"
+      },
+      {
+        "family": "Konist",
+        "given": "Alar"
+      },
+      {
+        "family": "J\u00e4rvik",
+        "given": "Oliver"
+      }
+    ],
+    "DOI": "10.15159/ar.21.005",
+    "ISSN": "1406-894X",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "language": "eng",
+    "note": "Accepted: 2021-01-19T07:31:41Z",
+    "source": "dspace.emu.ee",
+    "title": "Characterization of different wood species as potential feedstocks for gasification",
+    "type": "article-journal",
+    "URL": "https://dspace.emu.ee//handle/10492/6285"
+  },
+  {
+    "id": "pedisiusAnalysisWoodChip2021",
+    "abstract": "Wood chips and logging residues currently comprise the largest share of biomass fuels used for heat generation in district heating plants and are provided by a variety of suppliers. Ash and moisture contents, as well as the calorific value, may vary considerably depending on the composition of the fuel, seasonality, location, and other factors. This paper provides the summarized results of the main characteristics of wood chip moisture and ash content and calorific value, experimentally tested for a significant range of samples. Chip samples were collected from two district heating companies and tested for a significant range of samples. Chip samples were collected from two district heating companies and tested for a 3-year period. The data on fuel chip prices were taken from the electronic wood chip trading platform. The tests were performed using standard express methods, where two sub-samples were taken and analyzed from every chip sample. It was determined that the moisture content of the wood chips varied from 35% to 45%, the calorific value from 18.4 to 19.6 MJ/kg, and the ash content from 0.5% to 4.5%. The calculated relative expanded uncertainty of the moisture content measurement was \u00b12.1%, of calorific value\u2014\u00b11.5%, and of ash\u2014\u00b11.0%. The repeatability of the results was estimated as the pooled standard deviation.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          9,
+          14
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Pedi\u0161ius",
+        "given": "Nerijus"
+      },
+      {
+        "family": "Praspaliauskas",
+        "given": "Marius"
+      },
+      {
+        "family": "Pedi\u0161ius",
+        "given": "Justinas"
+      },
+      {
+        "family": "Dzenajavi\u010dien\u0117",
+        "given": "Eugenija Farida"
+      }
+    ],
+    "container-title": "Energies",
+    "DOI": "10.3390/en14133931",
+    "issue": "13",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "number": "13",
+    "page": "3931",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "source": "www.mdpi.com",
+    "title": "Analysis of Wood Chip Characteristics for Energy Production in Lithuania",
+    "type": "article-journal",
+    "URL": "https://www.mdpi.com/1996-1073/14/13/3931",
+    "volume": "14"
+  },
+  {
+    "id": "irenaRenewablePowerGeneration2020",
+    "abstract": "IRENA\u2019s latest global cost study shows solar and wind power reaching new price lows. The report highlights cost trends for all major renewable electricity sources.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          29
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "IRENA",
+        "given": ""
+      }
+    ],
+    "event-place": "Abu Dhabi",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "language": "en",
+    "publisher": "International Renewable Energy Agency",
+    "publisher-place": "Abu Dhabi",
+    "title": "Renewable Power Generation Costs in 2020",
+    "type": "book",
+    "URL": "/publications/2020/Jun/Renewable-Power-Costs-in-2019"
+  },
+  null,
+  {
+    "id": "holttinenImpactsLargeAmounts2011",
+    "abstract": "There are dozens of studies made and ongoing related to wind integration. However, the results are not easy to compare. IEA WIND R&D Task 25 on \u2018Design and Operation of Power Systems with Large Amounts of Wind Power\u2019 collects and shares information on wind generation impacts on power systems, with analyses and guidelines on methodologies. In the state-of-the-art report (October, 2007), and the final report of the 3 years period (July, 2009) the most relevant wind power grid integration studies have been analysed especially regarding methodologies and input data. Several issues that impact on the amount of wind power that can be integrated have been identified. Large balancing areas and aggregation benefits of wide areas help in reducing the variability and forecast errors of wind power as well as help in pooling more cost effective balancing resources. System operation and functioning electricity markets at less than day-ahead time scales help reduce forecast errors of wind power. Transmission is the key to aggregation benefits, electricity markets and larger balancing areas. Best practices in wind integration studies are described. There is also benefit when adding wind power to power systems: it reduces the total operating costs and emissions as wind replaces fossil fuels and this should be highlighted more in future studies. Copyright \u00a9 2010 John Wiley & Sons, Ltd.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          7,
+          26
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Holttinen",
+        "given": "Hannele"
+      },
+      {
+        "family": "Meibom",
+        "given": "Peter"
+      },
+      {
+        "family": "Orths",
+        "given": "Antje"
+      },
+      {
+        "family": "Lange",
+        "given": "Bernhard"
+      },
+      {
+        "family": "O'Malley",
+        "given": "Mark"
+      },
+      {
+        "family": "Tande",
+        "given": "John Olav"
+      },
+      {
+        "family": "Estanqueiro",
+        "given": "Ana"
+      },
+      {
+        "family": "Gomez",
+        "given": "Emilio"
+      },
+      {
+        "family": "S\u00f6der",
+        "given": "Lennart"
+      },
+      {
+        "family": "Strbac",
+        "given": "Goran"
+      },
+      {
+        "family": "Smith",
+        "given": "J. Charles"
+      },
+      {
+        "family": "Hulle",
+        "given": "Frans",
+        "dropping-particle": "van"
+      }
+    ],
+    "container-title": "Wind Energy",
+    "DOI": "10.1002/we.410",
+    "ISSN": "1099-1824",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "language": "en",
+    "note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/we.410",
+    "page": "179-192",
+    "source": "Wiley Online Library",
+    "title": "Impacts of large amounts of wind power on design and operation of power systems, results of IEA collaboration",
+    "type": "article-journal",
+    "URL": "https://onlinelibrary.wiley.com/doi/abs/10.1002/we.410",
+    "volume": "14"
+  },
+  {
+    "id": "irenaRenewablePowerGeneration2019",
+    "abstract": "IRENA\u2019s latest global cost study shows solar and wind power reaching new price lows. The report highlights cost trends for all major renewable electricity sources.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          29
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "IRENA",
+        "given": ""
+      }
+    ],
+    "event-place": "Abu Dhabi",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "language": "en",
+    "publisher": "International Renewable Energy Agency",
+    "publisher-place": "Abu Dhabi",
+    "title": "Renewable Power Generation Costs in 2019",
+    "type": "book",
+    "URL": "https://www.irena.org/publications/2020/Jun/Renewable-Power-Costs-in-2019"
+  },
+  {
+    "id": "dhaeseleerSynthesisEconomicsNuclear2013",
+    "author": [
+      {
+        "family": "D\u2019haeseleer",
+        "given": "William D."
+      }
+    ],
+    "container-title": "Study for the European Commission, DG Energy, Final Report, European Commission, Brussels",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "source": "Google Scholar",
+    "title": "Synthesis on the economics of nuclear energy",
+    "type": "article-journal"
+  },
+  {
+    "id": "ieaWorldEnergyOutlook2006",
+    "abstract": "World Energy Outlook 2006 - Analysis and key findings. A report by the International Energy Agency.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          7,
+          19
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "IEA",
+        "given": ""
+      }
+    ],
+    "event-place": "Paris, France",
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "language": "en-GB",
+    "publisher": "International Energy Agency",
+    "publisher-place": "Paris, France",
+    "title": "World Energy Outlook 2006",
+    "type": "report",
+    "URL": "https://www.iea.org/reports/world-energy-outlook-2006"
+  },
+  {
+    "id": "abdullaExpertAssessmentsCost2013",
+    "abstract": "Analysts and decision makers frequently want estimates of the cost of technologies that have yet to be developed or deployed. Small modular reactors (SMRs), which could become part of a portfolio of carbon-free energy sources, are one such technology. Existing estimates of likely SMR costs rely on problematic top-down approaches or bottom-up assessments that are proprietary. When done properly, expert elicitations can complement these approaches. We developed detailed technical descriptions of two SMR designs and then conduced elicitation interviews in which we obtained probabilistic judgments from 16 experts who are involved in, or have access to, engineering-economic assessments of SMR projects. Here, we report estimates of the overnight cost and construction duration for five reactor-deployment scenarios that involve a large reactor and two light water SMRs. Consistent with the uncertainty introduced by past cost overruns and construction delays, median estimates of the cost of new large plants vary by more than a factor of 2.5. Expert judgments about likely SMR costs display an even wider range. Median estimates for a 45 megawatts-electric (MWe) SMR range from $4,000 to $16,300/kWe and from $3,200 to $7,100/kWe for a 225-MWe SMR. Sources of disagreement are highlighted, exposing the thought processes of experts involved with SMR design. There was consensus that SMRs could be built and brought online about 2 y faster than large reactors. Experts identify more affordable unit cost, factory fabrication, and shorter construction schedules as factors that may make light water SMRs economically viable.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          7,
+          20
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Abdulla",
+        "given": "Ahmed"
+      },
+      {
+        "family": "Azevedo",
+        "given": "In\u00eas Lima"
+      },
+      {
+        "family": "Morgan",
+        "given": "M. Granger"
+      }
+    ],
+    "container-title": "Proceedings of the National Academy of Sciences",
+    "container-title-short": "PNAS",
+    "DOI": "10.1073/pnas.1300195110",
+    "ISSN": "0027-8424, 1091-6490",
+    "issue": "24",
+    "issued": {
+      "date-parts": [
+        [
+          2013,
+          6,
+          11
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "9686-9691",
+    "PMID": "23716682",
+    "publisher": "National Academy of Sciences",
+    "section": "Physical Sciences",
+    "source": "www.pnas.org",
+    "title": "Expert assessments of the cost of light water small modular reactors",
+    "type": "article-journal",
+    "URL": "https://www.pnas.org/content/110/24/9686",
+    "volume": "110"
+  },
+  {
+    "id": "loveringHistoricalConstructionCosts2016",
+    "abstract": "The existing literature on the construction costs of nuclear power reactors has focused almost exclusively on trends in construction costs in only two countries, the United States and France, and during two decades, the 1970s and 1980s. These analyses, Koomey and Hultman (2007); Grubler (2010), and Escobar-Rangel and L\u00e9v\u00eaque (2015), study only 26% of reactors built globally between 1960 and 2010, providing an incomplete picture of the economic evolution of nuclear power construction. This study curates historical reactor-specific overnight construction cost (OCC) data that broaden the scope of study substantially, covering the full cost history for 349 reactors in the US, France, Canada, West Germany, Japan, India, and South Korea, encompassing 58% of all reactors built globally. We find that trends in costs have varied significantly in magnitude and in structure by era, country, and experience. In contrast to the rapid cost escalation that characterized nuclear construction in the United States, we find evidence of much milder cost escalation in many countries, including absolute cost declines in some countries and specific eras. Our new findings suggest that there is no inherent cost escalation trend associated with nuclear technology.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          30
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Lovering",
+        "given": "Jessica R."
+      },
+      {
+        "family": "Yip",
+        "given": "Arthur"
+      },
+      {
+        "family": "Nordhaus",
+        "given": "Ted"
+      }
+    ],
+    "container-title": "Energy Policy",
+    "container-title-short": "Energy Policy",
+    "DOI": "10.1016/j.enpol.2016.01.011",
+    "ISSN": "0301-4215",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          4,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "371-382",
+    "source": "ScienceDirect",
+    "title": "Historical construction costs of global nuclear power reactors",
+    "type": "article-journal",
+    "URL": "http://www.sciencedirect.com/science/article/pii/S0301421516300106",
+    "volume": "91"
+  },
+  {
+    "id": "worldnuclearassociationEconomicsNuclearPower",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          7,
+          20
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "World Nuclear Association",
+        "given": ""
+      }
+    ],
+    "title": "Economics of Nuclear Power",
+    "type": "webpage",
+    "URL": "https://world-nuclear.org/information-library/economic-aspects/economics-of-nuclear-power.aspx"
+  },
+  {
+    "id": "kuznetsovCurrentStatusTechnical2011",
+    "author": [
+      {
+        "family": "Kuznetsov",
+        "given": "Vladimir"
+      },
+      {
+        "family": "Lokhov",
+        "given": "Alexey"
+      }
+    ],
+    "event-place": "Paris, France",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "publisher": "Nuclear energy agency of the Organisation of economic cooperation and development",
+    "publisher-place": "Paris, France",
+    "source": "Google Scholar",
+    "title": "Current status, technical feasibility and economics of small nuclear reactors",
+    "type": "report"
+  },
+  {
+    "id": "vegelEconomicEvaluationSmall2017",
+    "abstract": "Carbon emission concerns and volatility in fossil fuel resources have renewed world-wide interest in nuclear energy as a solution to growing energy demands. Several large nuclear reactors are currently under construction in the United States, representing the first new construction in over 30 years. Small Modular Reactors (SMRs) have been in design for many years and offer potential technical and economic advantages compared with traditionally larger reactors. Current SMR capital and operational expenses have a wide range of uncertainty. This work evaluates the potential for SMRs in the US, develops a robust techno-economic assessment of SMRs, and leverages the model to evaluate US regulatory fees structures. Modeling includes capital expenses of a factory facility and capital and operational expenses with multiple scenarios explored through a component-level capital cost model. Policy regarding the licensing and regulation of SMRs is under development with proposed annual US regulatory fees evaluated through the developed techno-economic model. Results show regulatory fees are a potential barrier to the economic viability of SMRs with an alternate fee structure proposed and evaluated. The proposed fee structure is based on the re-distribution of fees for all nuclear reactors under a single structure based on reactor thermal power rating.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          7,
+          20
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Vegel",
+        "given": "Benjamin"
+      },
+      {
+        "family": "Quinn",
+        "given": "Jason C."
+      }
+    ],
+    "container-title": "Energy Policy",
+    "container-title-short": "Energy Policy",
+    "DOI": "10.1016/j.enpol.2017.01.043",
+    "ISSN": "0301-4215",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          5,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "395-403",
+    "source": "ScienceDirect",
+    "title": "Economic evaluation of small modular nuclear reactors and the complications of regulatory fee structures",
+    "type": "article-journal",
+    "URL": "https://www.sciencedirect.com/science/article/pii/S0301421517300538",
+    "volume": "104"
+  },
+  {
+    "id": "NuclearPowerEconomics",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          30
+        ]
+      ]
+    },
+    "title": "Nuclear Power Economics | Nuclear Energy Costs - World Nuclear Association",
+    "type": "webpage",
+    "URL": "https://www.world-nuclear.org/information-library/economic-aspects/economics-of-nuclear-power.aspx"
+  },
+  null,
+  null,
+  {
+    "id": "oecdNuclearElectricityGeneration2003",
+    "author": [
+      {
+        "family": "OECD",
+        "given": "NEA"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "publisher": "OECD",
+    "source": "Google Scholar",
+    "title": "Nuclear electricity generation: What are the external costs",
+    "title-short": "Nuclear electricity generation",
+    "type": "report"
+  },
+  {
+    "id": "PaldiskisseKerkibUudne2020",
+    "abstract": "Elektrimajandus on \u00fcks v\u00e4hestest otse l\u00f5pptarbijale suunatud majandusvaldkondadest Eestis, mis on suure lisandv\u00e4\u00e4rtusega ja julgeolekut loov. T\u00e4nap\u00e4evasele elektrimajandusele \u00fcleminekut ja",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          1,
+          11
+        ]
+      ]
+    },
+    "container-title": "T\u00f6\u00f6stusEST",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          23
+        ]
+      ]
+    },
+    "language": "et",
+    "section": "Huvitav objekt",
+    "title": "Paldiskisse kerkib uudne pump-h\u00fcdroakumulatsioonijaam",
+    "type": "post-weblog",
+    "URL": "https://toostusest.ee/uudis/2020/09/23/paldiskisse-kerkib-uudne-pump-hudroakumulatsioonijaam/"
+  },
+  {
+    "id": "kapilaDevelopmentTechnoeconomicModels2017",
+    "abstract": "The development of a cost structure for energy storage systems (ESS) has received limited attention. In this study, we developed data-intensive techno-economic models to assess the economic feasibility of ESS. The ESS here includes pump hydro storage (PHS) and compressed air energy storage (CAES). The costs were developed using data-intensive bottom-up models. Scale factors were developed for each component of the storage systems. The life cycle costs of energy storage were estimated for capacity ranges of 98\u2013491\u00a0MW, 81\u2013404\u00a0MW, and 60\u2013298\u00a0MW for PHS, conventional CAES (C-CAES), and adiabatic CAES (A-CAES), respectively, to ensure a market-driven price can be achieved. For CAES systems, costs were developed for storage in salt caverns hard rock caverns, and porous formations. The results show that the annual life cycle storage cost is $220\u2013400 for PHS, $215\u2013265 for C-CAES, and $375\u2013480 per kW-year for A-CAES. The levelised cost of electricity is $69\u2013121 for PHS, $58\u201370 for C-CAES, and $96\u2013121 per MWh for A-CAES. C-CAES is economically attractive at all capacities, PHS is economically attractive at higher capacities, and A-CAES is not attractive at all. The developed information is helpful in making investment decision related to large energy storage systems.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          1,
+          21
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Kapila",
+        "given": "Sahil"
+      },
+      {
+        "family": "Oni",
+        "given": "Abayomi Olufemi"
+      },
+      {
+        "family": "Kumar",
+        "given": "Amit"
+      }
+    ],
+    "container-title": "Energy",
+    "container-title-short": "Energy",
+    "DOI": "10.1016/j.energy.2017.08.117",
+    "ISSN": "0360-5442",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          12,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "656-672",
+    "source": "ScienceDirect",
+    "title": "The development of techno-economic models for large-scale energy storage systems",
+    "type": "article-journal",
+    "URL": "http://www.sciencedirect.com/science/article/pii/S0360544217314925",
+    "volume": "140"
+  },
+  {
+    "id": "guoLifeCycleSustainability2020",
+    "abstract": "At present, pumped hydro energy storage plays the dominant role in electrical energy storage. However, its development is clearly restricted by the topography and adverse impacts on local residents. Underground pumped hydro energy storage (UPHES) using abandoned mine pits not only can effectively remedy these drawbacks but is also constructive to the management of abandoned mine pits. In this paper, we firstly conduct a comprehensive analysis of conventional pumped hydro energy storage (CPHES) and UPHES, using life cycle sustainability assessment (LCSA). Sustainability indicators in this paper include economic indicators, environmental indicators, and social indicators. Among all the indicators, blue water footprint (BWF) and ecological footprint (EF) are included for the first time to assess the social performance of CPHES and UPHES. Then, this paper employs multi-attribute value theory (MAVT) and scenario analysis to evaluate the overall performance of energy storages. The results show that CPHES has better performance in economy and environment than UPHES because of the economies of scale, while the UPHES has better performance in social sustainability impact because of the absence of stages of excavation and backfilling. When using MAVT methodology, only when the weight for social indicator is three times higher than that of economy and environment; ie, the weight for social dimension is 0.6, and the weights for environmental and social dimension are 0.2; the score of UPHES is higher than CPHES.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          1,
+          22
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Guo",
+        "given": "Zhi"
+      },
+      {
+        "family": "Ge",
+        "given": "Shuaishuai"
+      },
+      {
+        "family": "Yao",
+        "given": "Xilong"
+      },
+      {
+        "family": "Li",
+        "given": "Hui"
+      },
+      {
+        "family": "Li",
+        "given": "Xiaoyu"
+      }
+    ],
+    "container-title": "International Journal of Energy Research",
+    "DOI": "https://doi.org/10.1002/er.4890",
+    "ISSN": "1099-114X",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "language": "en",
+    "note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/er.4890",
+    "page": "192-204",
+    "source": "Wiley Online Library",
+    "title": "Life cycle sustainability assessment of pumped hydro energy storage",
+    "type": "article-journal",
+    "URL": "https://onlinelibrary.wiley.com/doi/abs/10.1002/er.4890",
+    "volume": "44"
+  },
+  {
+    "id": "paidipatiWorkforceDevelopmentHydropower2017",
+    "abstract": "The U.S. Department of Energy's Office of Scientific and Technical Information",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          8,
+          23
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Paidipati",
+        "given": "Jay"
+      },
+      {
+        "family": "Chung",
+        "given": "Greg"
+      },
+      {
+        "family": "Keyser",
+        "given": "David"
+      },
+      {
+        "family": "Kuc",
+        "given": "Megan"
+      },
+      {
+        "family": "Marty",
+        "given": "Rachel"
+      },
+      {
+        "family": "Tegen",
+        "given": "Suzanne"
+      }
+    ],
+    "DOI": "10.2172/1515066",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          1,
+          2
+        ]
+      ]
+    },
+    "language": "English",
+    "number": "DE-EE-0006507",
+    "publisher": "Navigant Consulting, Inc., Boulder CO (United States)",
+    "source": "www.osti.gov",
+    "title": "Workforce Development for Hydropower",
+    "type": "report",
+    "URL": "https://www.osti.gov/biblio/1515066"
+  },
+  {
+    "id": "kalinciTechnoeconomicAnalysisStandalone2015",
+    "abstract": "In the present study, a hybrid renewable energy system using hydrogen energy as energy storage option is conceptually modeled for the Bozcaada Island in Turkey. The system is investigated from the techno-economic point of view. The Hybrid Optimization Model for Electric Renewable (HOMER) tool is used to define the optimum size of the equipment based on the geographical and meteorological data of the island. The HOMER uses the net present cost (NPC) method while ranking the system suitability. Also, the cost of energy (COE) is calculated with the total annual cost (ACT). The study considers two scenarios, which are only wind turbine and wind turbine/PV hybrid systems. Using the wind turbine/PV array system, instead of wind turbine only, decreases the NPC from $14,624,343 to $11,960,698. Also, it decreases the hydrogen tank capacity to 400\u00a0kg and hence affects other equipment size and NPC. So, the COE varies between $1.016/kWh and $0.83/kWh. According to this, the optimum system components are defined as PV array-300\u00a0kW, wind turbine (E33x2), fuel cell-100\u00a0kW, converter-150\u00a0kW, electrolyzer-200\u00a0kW and hydrogen tank-400\u00a0kg to supply a 1875\u00a0kWh/d primary load. Furthermore, the effects of some parameters and the equipment on NPC are examined. Increasing potential of the renewable energy sources, such as annual average wind speed or solar radiation, decreases both COE and NPC. While the annual average solar radiation increases to 5\u00a0kWh/m2/d, the NPC and COE decrease to $11,673,704 and $0.81/kWh. Likewise, an increase in the annual average wind speed will decrease the costs to $11,452,712 and $0.795/kWh, respectively. Also, increasing the real interest i, to 5% increases the COE to $1.043/kWh, as expected.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          1,
+          11
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Kalinci",
+        "given": "Yildiz"
+      },
+      {
+        "family": "Hepbasli",
+        "given": "Arif"
+      },
+      {
+        "family": "Dincer",
+        "given": "Ibrahim"
+      }
+    ],
+    "collection-title": "Hydrogen and Fuel Cell Systems for Clean Energy Applications",
+    "container-title": "International Journal of Hydrogen Energy",
+    "container-title-short": "International Journal of Hydrogen Energy",
+    "DOI": "10.1016/j.ijhydene.2014.10.147",
+    "ISSN": "0360-3199",
+    "issue": "24",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          6,
+          29
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "7652-7664",
+    "source": "ScienceDirect",
+    "title": "Techno-economic analysis of a stand-alone hybrid renewable energy system with hydrogen production and storage options",
+    "type": "article-journal",
+    "URL": "http://www.sciencedirect.com/science/article/pii/S0360319914030730",
+    "volume": "40"
+  },
+  {
+    "id": "al-sharafiTechnoeconomicAnalysisOptimization2017",
+    "abstract": "The objective of this study is to investigate the potentials of power generation and hydrogen production via solar and wind energy resources at different locations in the Kingdom of Saudi Arabia, namely; Dhahran, Riyadh, Jeddah, Abha and Yanbu. These locations represent the climatic conditions variety in the Kingdom with different solar radiation and wind speed potentials. At each location, different renewable off-grid power generation systems are considered to cover a load demand of a typical house incorporating; photovoltaic (PV) array, wind turbines, converter, batteries, electrolyzer, fuel cell (FC) and hydrogen tank. Six systems are considered in hourly base simulations; PV/battery bank, wind/battery bank, PV/wind/battery bank, PV/FC, wind/FC and PV/wind/FC. The simulations have been extended to cover two global locations, namely; Toronto (Canada) and Sydney (Australia). The simulations and the optimizations studies are carried out to identify the cost effective configurations. The results show that integration of 2kW PV array, 3 wind turbines, 2kW converter and 7 batteries storage bank is the best configuration that leads to the minimum levelized cost of energy (COE) of 0.609$/kWh at Yanbu area. Replacing the battery bank by a combination of electrolyzer, fuel cell and hydrogen tank, storage system is possible; however, the cost increases due to the investment cost of the system components. Integrating PV/wind/FC in Abha area gives the minimum levelized cost of energy (COE) of 1.208$/kWh and the cost of the hydrogen production (COH) is 43.1$/kg.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          2,
+          3
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Al-Sharafi",
+        "given": "Abdullah"
+      },
+      {
+        "family": "Sahin",
+        "given": "Ahmet Z."
+      },
+      {
+        "family": "Ayar",
+        "given": "Tahir"
+      },
+      {
+        "family": "Yilbas",
+        "given": "Bekir S."
+      }
+    ],
+    "container-title": "Renewable and Sustainable Energy Reviews",
+    "container-title-short": "Renewable and Sustainable Energy Reviews",
+    "DOI": "10.1016/j.rser.2016.11.157",
+    "ISSN": "1364-0321",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          3,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "33-49",
+    "source": "ScienceDirect",
+    "title": "Techno-economic analysis and optimization of solar and wind energy systems for power generation and hydrogen production in Saudi Arabia",
+    "type": "article-journal",
+    "URL": "http://www.sciencedirect.com/science/article/pii/S136403211630908X",
+    "volume": "69"
+  },
+  {
+    "id": "sanghaiTechnoEconomicAnalysisHydrogen2013",
+    "author": [
+      {
+        "family": "Sanghai",
+        "given": "Yash"
+      }
+    ],
+    "event-place": "Amherst, MA, USA",
+    "genre": "Masters thesis",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "language": "en",
+    "publisher": "University of Massachusetts Amherst",
+    "publisher-place": "Amherst, MA, USA",
+    "source": "Zotero",
+    "title": "Techno-Economic Analysis of Hydrogen Fuel Cell Systems Used as an Electricity Storage Technology in a Wind Farm with Large Amounts of Intermittent Energy",
+    "type": "thesis"
+  },
+  {
+    "id": "parissisIntegrationWindHydrogen2011",
+    "abstract": "The intermittent nature of most Renewable Energy Sources (RES) imposes difficulties in matching supply with demand and technical problems associated with weak grids. Energy storage may play a vital role in addressing these issues allowing for higher penetration of RES into weak electricity grids, especially in islands and isolated communities. The aim of STORIES project, which is co-financed by the Intelligent Energy \u2013 Europe programme of the European Commission, is to provide suggestions for changes in policies and regulations covering RES installations and to promote the use of energy storage technologies in island grids based also on the assessment of economic aspects, such as internal and external costs of energy storage solutions in order to increase RES penetration. The main outcome of the project will be the development of a Roadmap for the promotion of hybrid RES-energy storage power systems, which may assist in overcoming barriers for higher RES penetration in European islands and boosting the respective RES electricity markets in these areas. In the present work, the introduction of hydrogen as a storage means and wind energy as an electricity production source into the power supply system of the Portuguese island Corvo in Azores is presented. A cost-benefit analysis is carried out in order to examine the proposed RES and Hydrogen power system from an economic, environmental and social perspective. The results indicate that a considerable RES penetration into the power system of Corvo island is feasible and entails convergence between the financial and social profitability showing alignment of private and social interest.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          2,
+          8
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Parissis",
+        "given": "O. -S."
+      },
+      {
+        "family": "Zoulias",
+        "given": "E."
+      },
+      {
+        "family": "Stamatakis",
+        "given": "E."
+      },
+      {
+        "family": "Sioulas",
+        "given": "K."
+      },
+      {
+        "family": "Alves",
+        "given": "L."
+      },
+      {
+        "family": "Martins",
+        "given": "R."
+      },
+      {
+        "family": "Tsikalakis",
+        "given": "A."
+      },
+      {
+        "family": "Hatziargyriou",
+        "given": "N."
+      },
+      {
+        "family": "Caralis",
+        "given": "G."
+      },
+      {
+        "family": "Zervos",
+        "given": "A."
+      }
+    ],
+    "collection-title": "Hysydays",
+    "container-title": "International Journal of Hydrogen Energy",
+    "container-title-short": "International Journal of Hydrogen Energy",
+    "DOI": "10.1016/j.ijhydene.2010.12.074",
+    "ISSN": "0360-3199",
+    "issue": "13",
+    "issued": {
+      "date-parts": [
+        [
+          2011,
+          7,
+          1
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "8143-8151",
+    "source": "ScienceDirect",
+    "title": "Integration of wind and hydrogen technologies in the power system of Corvo island, Azores: A cost-benefit analysis",
+    "title-short": "Integration of wind and hydrogen technologies in the power system of Corvo island, Azores",
+    "type": "article-journal",
+    "URL": "https://www.sciencedirect.com/science/article/pii/S036031991002416X",
+    "volume": "36"
+  },
+  {
+    "id": "kusakanaFeasibilityAnalysisRiver2015",
+    "abstract": "Hydrokinetic power generation is currently gaining interest as a cost effective way of supplying isolated areas where reasonable water resource is available. However the seasonal characteristic of the water resource as well as the intermittent fluctuating load demand prevents this power generation system from being entirely reliable without appropriate energy storage system. Few researchers have recently analyzed the use of hydrokinetic systems as standalone or combined with other energy source, however the authors of these researches did not explore other means of storing energy except for traditional battery storage systems. In this study, the most conventional and established storage technology, pumped hydro storage, is proposed to be used in conjunction with a standalone hydrokinetic system in off-grid power supply. The techno-economic feasibility of such combination is analyzed and compared to the option where batteries are considered as storage system. The operation principle of the system is presented; the mathematical model and simulation model are also developed. Simulations are performed using two different types of loads in rural South Africa as case studies to demonstrate the technical cost advantages as well as the cost effectiveness of the proposed supply option. The results reveal that the novel micro-pumped hydro storage based hydrokinetic system is a cost-effective, reliable and environmentally friendly solution to achieve 100% energy autonomy in remote and isolated communities.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          2,
+          8
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Kusakana",
+        "given": "Kanzumba"
+      }
+    ],
+    "container-title": "Energy Conversion and Management",
+    "container-title-short": "Energy Conversion and Management",
+    "DOI": "10.1016/j.enconman.2015.02.089",
+    "ISSN": "0196-8904",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          5,
+          15
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "352-362",
+    "source": "ScienceDirect",
+    "title": "Feasibility analysis of river off-grid hydrokinetic systems with pumped hydro storage in rural applications",
+    "type": "article-journal",
+    "URL": "https://www.sciencedirect.com/science/article/pii/S0196890415002125",
+    "volume": "96"
+  },
+  null,
+  null,
+  {
+    "id": "theworldbankgroupGlobalSolarAtlas",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          1
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "The World Bank Group",
+        "given": ""
+      }
+    ],
+    "title": "Global Solar Atlas",
+    "type": "webpage",
+    "URL": "https://globalsolaratlas.info/map"
+  },
+  {
+    "id": "ilmateenistusPaikesekiirguseAtlas",
+    "abstract": "P\u00e4ikesekiirguse atlas on loodud L\u00e4ti, Leedu, Poola ja Eesti koost\u00f6\u00f6na. Kaartide koostamisel on kasutatud satelliidiandmeid EUMETSAT CM SAF SARAH andmestikust perioodil 1991-2014.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          26
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Ilmateenistus",
+        "given": ""
+      }
+    ],
+    "container-title": "Riigi Ilmateenistus",
+    "language": "et",
+    "title": "P\u00e4ikesekiirguse atlas",
+    "type": "webpage",
+    "URL": "http://www.ilmateenistus.ee/kliima/paikesekiirguse-atlas/"
+  },
+  {
+    "id": "scienceeducationresourcecenteratcarletoncollegePartExamineData",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          27
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Science Education Resource Center at Carleton College",
+        "given": ""
+      }
+    ],
+    "container-title": "Project REDI",
+    "language": "en",
+    "title": "Part 2\u2014Examine Data From a Single Location",
+    "type": "webpage",
+    "URL": "https://serc.carleton.edu/eet/redi/part_2.html"
+  },
+  {
+    "id": "nordpoolMarketData",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          7,
+          7
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Nord Pool",
+        "given": ""
+      }
+    ],
+    "source": "www.nordpoolgroup.com",
+    "title": "Market data",
+    "type": "webpage",
+    "URL": "https://www.nordpoolgroup.com/Market-data1/Dayahead/Area-Prices/EE/Yearly/"
+  },
+  {
+    "id": "eiaElectricPowerMonthly",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          1
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "EIA",
+        "given": ""
+      }
+    ],
+    "title": "Electric Power Monthly - U.S. Energy Information Administration (EIA)",
+    "type": "webpage",
+    "URL": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php"
+  },
+  {
+    "id": "morilhatNuclearPowerPlant2019",
+    "abstract": "Based upon existing experience feedback of French nuclear power plants operated by EDF (Electricit\u00e9 de France), this paper shows that flexible operation of nuclear reactors is possible and has been applied in France by EDF's 58 reactors for more than 30 years without any noticeable or unmanageable impacts: no effects on safety or on the environment, and no noticeable additional maintenance costs, with an additional unplanned capability load factor estimated at only 0.5%. EDF's nuclear reactors have the capability to vary their output between 20% and 100% within 30 minutes, twice a day, when operating in load-following mode. Flexible operation requires sound plant design (safety margins, auxiliary equipment) and appropriate operator skills, and early modifications were made to the initial Westinghouse design to enable flexible operation (e.g., use of \"grey\" control rods to vary reactor core thermal power more rapidly than with conventional \"black\" control rods). The nominal capacities of the present power stations are sufficient, safe and adequate to balance generation against demand and allow renewables to be inserted intermittently, without any additional CO 2 emissions. It is a clear demonstration of full complementarity between nuclear and renewable energies.",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          11,
+          4
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Morilhat",
+        "given": "Patrick"
+      },
+      {
+        "family": "Feutry",
+        "given": "St\u00e9phane"
+      },
+      {
+        "family": "Maitre",
+        "given": "Christelle Le"
+      },
+      {
+        "family": "Favennec",
+        "given": "Jean Melaine"
+      }
+    ],
+    "container-title": "Atw Internationale Zeitschrift fuer Kernenergie",
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          1,
+          23
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "131-140",
+    "source": "hal-edf.archives-ouvertes.fr",
+    "title": "Nuclear Power Plant flexibility at EDF",
+    "type": "article-journal",
+    "URL": "https://hal-edf.archives-ouvertes.fr/hal-01977209",
+    "volume": "64"
+  },
+  {
+    "id": "irenaFlexibilityConventionalPower2019",
+    "author": [
+      {
+        "family": "IRENA",
+        "given": ""
+      }
+    ],
+    "event-place": "Abu Dhabi",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "language": "en",
+    "page": "20",
+    "publisher": "International Renewable Energy Agency",
+    "publisher-place": "Abu Dhabi",
+    "source": "Zotero",
+    "title": "Flexibility in conventional power plants",
+    "type": "report"
+  },
+  {
+    "id": "eestistatistikaametKE03ElektrienergiaBilanss",
+    "author": [
+      {
+        "family": "Eesti Statistikaamet",
+        "given": ""
+      }
+    ],
+    "publisher": "Eesti Statistikaamet",
+    "title": "KE03: Elektrienergia bilanss",
+    "type": "article"
+  },
+  {
+    "id": "irenaBiomassPowerGeneration2012",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          3,
+          1
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "IRENA",
+        "given": ""
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2012
+        ]
+      ]
+    },
+    "publisher": "International Renewable Energy Agency",
+    "title": "Biomass for Power Generation",
+    "type": "book",
+    "URL": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2012/RE_Technologies_Cost_Analysis-BIOMASS.pdf"
+  },
+  {
+    "id": "Hydropower",
+    "abstract": "Hydropower typically remains the cheapest way to generate electricity of any source where good resources exist.",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          3,
+          1
+        ]
+      ]
+    },
+    "container-title": "IRENA - International Renewable Energy Agency",
+    "language": "en",
+    "title": "Hydropower",
+    "type": "webpage",
+    "URL": "https://www.irena.org/costs/Power-Generation-Costs/Hydropower"
+  },
+  {
+    "id": "eleringasEleringLive",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          2,
+          18
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Elering AS",
+        "given": ""
+      }
+    ],
+    "title": "Elering Live",
+    "type": "webpage",
+    "URL": "https://dashboard.elering.ee/et"
+  }
+]
