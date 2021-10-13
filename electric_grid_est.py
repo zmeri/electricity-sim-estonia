@@ -223,8 +223,10 @@ def production(t, caps, demanded, rng, plot_example=False):
     if plot_example:
         # plot an example of the production and demand data from a simulation
         plt.rcParams.update({'font.size': 16})
-        i_start = int(95 * SECONDS_IN_DAY / time_step)
-        i_end = int(100 * SECONDS_IN_DAY / time_step)
+        day_start = 30
+        day_end = 35
+        i_start = int(day_start * SECONDS_IN_DAY / time_step)
+        i_end = int(day_end * SECONDS_IN_DAY / time_step)
         fig, ax = plt.subplots(figsize=(12,9))
         plt.plot(t[i_start:i_end] / SECONDS_IN_DAY, demanded[i_start:i_end], label='Demand', color='black', linewidth=2)
         plt.plot(t[i_start:i_end] / SECONDS_IN_DAY, wind[i_start:i_end], label='Wind', linewidth=2)
@@ -238,9 +240,9 @@ def production(t, caps, demanded, rng, plot_example=False):
         plt.plot(t[i_start:i_end] / SECONDS_IN_DAY, produced[i_start:i_end], label='Total production', linestyle='--')
         plt.ylabel('MW')
         plt.xlabel('Day of the year')
-        plt.xlim([30, 35])
-        plt.legend(frameon=False, loc=1, bbox_to_anchor=(1.25, 1.0))
-        plt.subplots_adjust(right=0.82)
+        plt.xlim([day_start, day_end])
+        plt.legend(frameon=False, loc=1, bbox_to_anchor=(1.40, 1.0))
+        plt.subplots_adjust(right=0.75)
         plt.savefig('figures/simulation_example', dpi=400)
         plt.show()
 
@@ -845,9 +847,9 @@ if __name__ == '__main__':
     # find_demand_coefficients()
     # find_wind_coefficients()
     # find_price_coefficients()
-    # single_sim(show_plot=False, plot_example=True)
+    single_sim(show_plot=False, plot_example=True)
     # storage_effect(run_simulation=False)
-    compare_systems(run_simulation=False)
+    # compare_systems(run_simulation=False)
     # wind_penetration_cost(run_simulation=False)
     # surplus_duration_curve(run_simulation=False)
     # demand_duration_curve(run_simulation=False)
