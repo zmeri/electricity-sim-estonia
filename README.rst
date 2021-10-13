@@ -18,7 +18,7 @@ The core of the code is the `simulation <https://github.com/zmeri/electricity-si
 Demand
 ------
 
-The electricity demand for a given year is generated using the `demand <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L275>`_ function. This demand data is generated using an inverse discrete cosine transform, which is implemented using Scipy's idct_ function. The cosine coefficients that are transformed are sampled from normal distributions. The parameters for these normal distributions were determined before based on 5 years of actual demand data for Estonia, and this was done using the `find_demand_coefficients <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L423>`_ function.
+The electricity demand for a given year is generated using the `demand <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L277>`_ function. This demand data is generated using an inverse discrete cosine transform, which is implemented using Scipy's idct_ function. The cosine coefficients that are transformed are sampled from normal distributions. The parameters for these normal distributions were determined before based on 5 years of actual demand data for Estonia, and this was done using the `find_demand_coefficients <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L425>`_ function.
 
 Production
 ----------
@@ -33,7 +33,7 @@ The amount of electricity flowing to or from storage was calculated in a separat
 Cost
 ----
 
-The overall system cost is calculated in the `calc_cost <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L301>`_ function. We calculated the levelized cost using the equation used by IRENA_ and most other literature sources (see Equation 1 in `our article`_). For `biomass plants <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L339>`_, `hydropower <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L343>`_, and `onshore <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L151>`_ and `offshore <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L159>`_ wind turbines, we simply used distributions based on literature data. Below we give the main parameters used in calculating the levelized cost of electricity for each technology.
+The overall system cost is calculated in the `calc_cost <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L303>`_ function. We calculated the levelized cost using the equation used by IRENA_ and most other literature sources (see Equation 1 in `our article`_). For `biomass plants <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L341>`_, `hydropower <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L345>`_, and `onshore <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L151>`_ and `offshore <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L159>`_ wind turbines, we simply used distributions based on literature data. Below we give the main parameters used in calculating the levelized cost of electricity for each technology.
 
 Oil shale
 ~~~~~~~~~
@@ -108,17 +108,17 @@ The cost_models.py file also contains functions for estimating the cost of `biom
 Monte Carlo method
 ------------------
 
-For the analyses performed in this study, a `Monte Carlo <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L359>`_ method was used to run the simulations many times to capture the full range of variation caused by the uncertainty of the underlying assumptions and parameters.
+For the analyses performed in this study, a `Monte Carlo <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L361>`_ method was used to run the simulations many times to capture the full range of variation caused by the uncertainty of the underlying assumptions and parameters.
 
 Analyses
 --------
 
 Several functions were written to perform the following analyses for this study:
 
-*  To investigate how `storage <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L503>`_ affects the performance of a grid consisting almost entirely of wind turbines
-*  To `compare <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L569>`_ likely low-emission scenarios in Estonia
-*  To determine how the cost and net surplus change with increasing `penetration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L754>`_ of wind power
-*  To calculate `surplus duration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L651>`_ curves
+*  To investigate how `storage <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L505>`_ affects the performance of a grid consisting almost entirely of wind turbines
+*  To `compare <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L571>`_ likely low-emission scenarios in Estonia
+*  To determine how the cost and net surplus change with increasing `penetration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L756>`_ of wind power
+*  To calculate `surplus duration <https://github.com/zmeri/electricity-sim-estonia/blob/master/electric_grid_est.py#L653>`_ curves
 
 References
 ----------
@@ -131,9 +131,9 @@ License
 This project is licensed under the GNU General Public License v3.0
 
 .. _2050: https://www.riigiteataja.ee/akt/315052021012
-.. _`"Comparison of the most likely low-emission electricity production systems in Estonia"`: https...
+.. _`"Comparison of the most likely low-emission electricity production systems in Estonia"`: https://osf.io/rq5kp
 .. _idct: https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.idct.html
 .. _IRENA: https://www.irena.org/publications/2020/Jun/Renewable-Power-Costs-in-2019
-.. _`our article`: https...
+.. _`our article`: https://osf.io/rq5kp
 .. _`Ueckerdt et al. (2013)`: https://doi.org/10.1016/j.energy.2013.10.072
 .. _`references.json`: https://github.com/zmeri/electricity-sim-estonia/references.json
