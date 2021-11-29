@@ -7,6 +7,7 @@ data/price_dct_coefficients.csv
 data/wind_dct_coefficients.csv
 data/surplus_duration_curve.csv
 data/demand_duration_curve.csv
+data/sensitivity_analysis.csv
 figures/*
 *.egg-info
 *.pytest_cache
