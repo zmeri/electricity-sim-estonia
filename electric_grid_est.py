@@ -18,7 +18,7 @@ class SimulationError(Exception):
     def __init__(self, message):
         self.message = message
 
-def simulation(caps, show_plot=False, plot_example=False):
+def simulation(caps, variable=None, show_plot=False, plot_example=False):
     rng = np.random.default_rng()
     SECONDS_IN_YR = 31536000
     SECONDS_IN_DAY = 86400
@@ -29,9 +29,9 @@ def simulation(caps, show_plot=False, plot_example=False):
     # charge_eff = 0.53 # for hydrogen; @sanghaiTechnoEconomicAnalysisHydrogen2013
     # discharge_eff = 0.40 # for hydrogen; based on estimates given in @sanghaiTechnoEconomicAnalysisHydrogen2013
 
-    demanded = demand(t, rng)
-    produced, annual_prod = production(t, caps, demanded, rng, plot_example)
-    price = calc_price(t, rng)
+    demanded = demand(t, rng, variable)
+    produced, annual_prod = production(t, caps, demanded, rng, variable=variable, plot_example=plot_example)
+    price = calc_price(t, rng, variable)
 
     y2 = dct(produced)
     y2 = y2[:25000]
@@ -78,7 +78,7 @@ def simulation(caps, show_plot=False, plot_example=False):
     for k, v in annual_prod.items():
         annual_prod[k] = v * (1 - fraction_lost)
 
-    cost, dif_from_arbitrage = calc_cost(caps, annual_prod, fraction_lost, 'uphes', rng, price, to_storage)
+    cost, dif_from_arbitrage = calc_cost(caps, annual_prod, fraction_lost, 'uphes', rng, price, to_storage, variable=variable)
     avg_cost = np.mean(cost)
     dif_from_arbitrage = np.mean(dif_from_arbitrage)
 
@@ -123,7 +123,7 @@ def demand_duration(i):
     probs, demanded = probability_dist(demanded)
     return i * np.ones_like(probs), probs, demanded
 
-def production(t, caps, demanded, rng, plot_example=False):
+def production(t, caps, demanded, rng, variable=None, plot_example=False):
     npts = t.shape[0]
     SECONDS_IN_YR = 31536000
     SECONDS_IN_DAY = 86400
@@ -135,19 +135,34 @@ def production(t, caps, demanded, rng, plot_example=False):
     smoothed_demand = idct(y3, n=npts)
 
     # biomass CHP
-    biomass = rng.normal(160, 20, 1) * np.ones((npts,)) # MW, @eestistatistikaametKE033ElektrijaamadeToodang
+    if not variable or variable == 'biomass':
+        biomass = rng.normal(160, 20, 1) * np.ones((npts,)) # MW, @eestistatistikaametKE033ElektrijaamadeToodang
+    else:
+        biomass = rng.normal(160, 0, 1) * np.ones((npts,))
 
     # hydropower
-    hydro = rng.normal(6, 1.1, 1) # MW, @eestistatistikaametKE032ElektrijaamadeVoimsus
+    if not variable:
+        hydro = rng.normal(6, 1.1, 1) # MW, @eestistatistikaametKE032ElektrijaamadeVoimsus
+    else:
+        hydro = rng.normal(6, 0, 1) # MW, @eestistatistikaametKE032ElektrijaamadeVoimsus
 
     # # solar
-    y2 = rng.normal(0, 6e4, 4000)
-    y2[0] = rng.normal(4e5, 4e4, 1) # @theworldbankgroupGlobalSolarAtlas
-    y2[2] = rng.normal(-9e6, 4e5, 1) # @ilmateenistusPaikesekiirguseAtlas
-    y2[730] = -2e7
-    weather = np.clip(rng.normal(0.5, 0.3, 365), 0.03, 1) # @scienceeducationresourcecenteratcarletoncollegePartExamineData
-    weather = np.repeat(weather, SECONDS_IN_DAY / time_step)
-    capfac_solar = idct(y2, n=npts) / time_step
+    if not variable or variable == 'capfac_solar':
+        y2 = rng.normal(0, 6e4, 4000)
+        y2[0] = rng.normal(4e5, 4e4, 1) # @theworldbankgroupGlobalSolarAtlas
+        y2[2] = rng.normal(-9e6, 4e5, 1) # @ilmateenistusPaikesekiirguseAtlas
+        y2[730] = -2e7
+        weather = np.clip(rng.normal(0.5, 0.3, 365), 0.03, 1) # @scienceeducationresourcecenteratcarletoncollegePartExamineData
+        weather = np.repeat(weather, SECONDS_IN_DAY / time_step)
+        capfac_solar = idct(y2, n=npts) / time_step
+    else:
+        y2 = rng.normal(0, 0, 4000)
+        y2[0] = rng.normal(4e5, 0, 1) # @theworldbankgroupGlobalSolarAtlas
+        y2[2] = rng.normal(-9e6, 0, 1) # @ilmateenistusPaikesekiirguseAtlas
+        y2[730] = -2e7
+        weather = np.clip(rng.normal(0.5, 0, 365), 0.03, 1) # @scienceeducationresourcecenteratcarletoncollegePartExamineData
+        weather = np.repeat(weather, SECONDS_IN_DAY / time_step)
+        capfac_solar = idct(y2, n=npts) / time_step
 
     capfac_solar[np.where(capfac_solar < 0)] = 0
     capfac_solar[np.where(capfac_solar > 1)] = 1
@@ -159,7 +174,10 @@ def production(t, caps, demanded, rng, plot_example=False):
     coef = pd.read_csv('data/wind_dct_coefficients.csv', delimiter=';') # loading the parameters for the coefficients
     coef = coef.head(ncoef)
 
-    y2 = rng.normal(coef['mean'], coef['stdev'], ncoef)
+    if not variable or variable == 'capfac_wind':
+        y2 = rng.normal(coef['mean'], coef['stdev'], ncoef)
+    else:
+        y2 = rng.normal(coef['mean'], 0, ncoef)
     y2[0] -= 3e4 # we slightly reduce the mean because over multiple runs the average was a little too high.
 
     capfac_wind = idct(y2, n=npts)
@@ -179,7 +197,11 @@ def production(t, caps, demanded, rng, plot_example=False):
 
     # nuclear
     if caps['nuclear'] > 0:
-        capfac_nuclear_avg = rng.normal(0.935, 0.03, 1) # @eiaElectricPowerMonthly
+        if not variable or variable == 'capfac_nuclear_avg':
+            capfac_nuclear_avg = rng.normal(0.935, 0.03, 1) # @eiaElectricPowerMonthly
+        else:
+            capfac_nuclear_avg = rng.normal(0.935, 0, 1)
+
         if capfac_nuclear_avg > 1: capfac_nuclear_avg = 1
         min_cap_nuclear = 0.2 # nuclear power plants can also be operated flexibly, @morilhatNuclearPowerPlant2019
         max_cap_nuclear = capfac_nuclear_avg
@@ -192,7 +214,11 @@ def production(t, caps, demanded, rng, plot_example=False):
 
     # oil shale with CCS
     if caps['oil shale'] > 0:
-        capfac_os_avg = rng.normal(0.82, 0.03, 1) # @jamesCostPerformanceBaseline2019
+        if not variable or variable == 'capfac_os_avg':
+            capfac_os_avg = rng.normal(0.82, 0.03, 1) # @jamesCostPerformanceBaseline2019
+        else:
+            capfac_os_avg = rng.normal(0.82, 0, 1) # @jamesCostPerformanceBaseline2019
+
         if capfac_os_avg > 1: capfac_os_avg = 1
         min_cap_os = 0.4 # @irenaFlexibilityConventionalPower2019
         max_cap_os = capfac_os_avg
@@ -205,7 +231,11 @@ def production(t, caps, demanded, rng, plot_example=False):
 
     # shale gas with CCS
     if caps['shale gas'] > 0:
-        capfac_gas_avg = rng.normal(0.85, 0.03, 1) # @jamesCostPerformanceBaseline2019
+        if not variable or variable == 'capfac_gas_avg':
+            capfac_gas_avg = rng.normal(0.85, 0.03, 1) # @jamesCostPerformanceBaseline2019
+        else:
+            capfac_gas_avg = rng.normal(0.85, 0, 1) # @jamesCostPerformanceBaseline2019
+
         if capfac_gas_avg > 1: capfac_gas_avg = 1
         min_cap_gas = 0.4
         max_cap_gas = capfac_gas_avg
@@ -217,7 +247,11 @@ def production(t, caps, demanded, rng, plot_example=False):
         shale_gas = 0
 
     produced = biomass + hydro + solar + wind + nuclear + os + shale_gas
-    transmission_losses = rng.normal(0.08, 0.01, 1) # @eestistatistikaametKE03ElektrienergiaBilanss
+    if not variable or variable == 'transmission_losses':
+        transmission_losses = rng.normal(0.08, 0.01, 1) # @eestistatistikaametKE03ElektrienergiaBilanss
+    else:
+        transmission_losses = rng.normal(0.08, 0, 1) # @eestistatistikaametKE03ElektrienergiaBilanss
+
     produced = (1 - transmission_losses) * produced
 
     if plot_example:
@@ -259,7 +293,7 @@ def production(t, caps, demanded, rng, plot_example=False):
     return produced, annual_prod
 
 
-def calc_price(t, rng):
+def calc_price(t, rng, variable=None):
     npts = t.shape[0]
     SECONDS_IN_YR = 31536000
     SECONDS_IN_DAY = 86400
@@ -268,13 +302,16 @@ def calc_price(t, rng):
     coef = pd.read_csv('data/price_dct_coefficients.csv', delimiter=';') # loading the parameters for the coefficients
 
     ncoef = coef.shape[0]
-    y = rng.normal(coef['mean'], coef['stdev'], ncoef)
+    if not variable or variable == 'price':
+        y = rng.normal(coef['mean'], coef['stdev'], ncoef)
+    else:
+        y = rng.normal(coef['mean'], 0, ncoef)
 
     price = idct(y, n=npts)
     return price
 
 
-def demand(t, rng):
+def demand(t, rng, variable=None):
     npts = t.shape[0]
     SECONDS_IN_YR = 31536000
     SECONDS_IN_DAY = 86400
@@ -285,7 +322,10 @@ def demand(t, rng):
     coef = pd.read_csv('data/demand_dct_coefficients.csv', delimiter=';')
     coef = coef.head(ncoef)
 
-    y = rng.normal(coef['mean'], coef['stdev'], ncoef)
+    if not variable or variable == 'demand':
+        y = rng.normal(coef['mean'], coef['stdev'], ncoef)
+    else:
+        y = rng.normal(coef['mean'], 0, ncoef)
 
     demanded = idct(y, n=npts)
     return demanded
@@ -300,7 +340,7 @@ def export(surplus, demanded):
     return exported
 
 
-def calc_cost(caps, prod, fraction_lost, storage_tech, rng, price, to_storage):
+def calc_cost(caps, prod, fraction_lost, storage_tech, rng, price, to_storage, variable=None):
     SECONDS_IN_YR = 31536000
     time_step = SECONDS_IN_YR / price.shape[0]
     npts = 1
@@ -314,42 +354,48 @@ def calc_cost(caps, prod, fraction_lost, storage_tech, rng, price, to_storage):
             capacity_wind_on = caps['wind']
         caps_wind_on = caps['wind'] * capacity_wind_on / caps['wind']
         prod_wind_on = prod['wind'] * capacity_wind_on / prod['wind']
-        cost_wind_on = co.cost_wind_on(npts, caps_wind_on, prod_wind_on, fraction_lost, rng)
+        cost_wind_on = co.cost_wind_on(npts, caps_wind_on, prod_wind_on, fraction_lost, rng, variable=variable)
         cost += cost_wind_on * prod['wind'] * capacity_wind_on / prod['wind'] / prod['total'] # we use a weighted average to combine the levelized costs of each system component
         caps_wind_off = caps['wind'] * (1 - capacity_wind_on / caps['wind'])
         prod_wind_off = prod['wind'] * (1 - capacity_wind_on / prod['wind'])
-        cost_wind_off = co.cost_wind_off(npts, caps_wind_off, prod_wind_off, fraction_lost, rng)
+        cost_wind_off = co.cost_wind_off(npts, caps_wind_off, prod_wind_off, fraction_lost, rng, variable=variable)
         cost += cost_wind_off * prod['wind'] * (1 - capacity_wind_on / prod['wind']) / prod['total']
 
     # solar
-    cost_solar = co.cost_solar(npts, caps['solar'], prod['solar'], rng) * prod['solar'] / prod['total']
+    cost_solar = co.cost_solar(npts, caps['solar'], prod['solar'], rng, variable=variable) * prod['solar'] / prod['total']
     cost += cost_solar
 
     # nuclear
-    cost_nuclear = co.cost_nuclear(npts, caps['nuclear'], prod['nuclear'], rng) * prod['nuclear'] / prod['total']
+    cost_nuclear = co.cost_nuclear(npts, caps['nuclear'], prod['nuclear'], rng, variable=variable) * prod['nuclear'] / prod['total']
     cost += cost_nuclear
 
     # oil shale
-    cost_os_noccs, cost_os_ccs_avg, cost_os_ccs_next = co.cost_os(npts, caps['oil shale'], prod['oil shale'], rng) * prod['oil shale'] / prod['total']
+    cost_os_noccs, cost_os_ccs_avg, cost_os_ccs_next = co.cost_os(npts, caps['oil shale'], prod['oil shale'], rng, variable=variable) * prod['oil shale'] / prod['total']
     cost += cost_os_ccs_avg
 
     # shale gas
-    cost_gas_noccs, cost_gas_ccs_avg, cost_gas_ccs_next = co.cost_os_gas(npts, caps['shale gas'], prod['shale gas'], rng) * prod['shale gas'] / prod['total']
+    cost_gas_noccs, cost_gas_ccs_avg, cost_gas_ccs_next = co.cost_os_gas(npts, caps['shale gas'], prod['shale gas'], rng, variable=variable) * prod['shale gas'] / prod['total']
     cost += cost_gas_ccs_avg
 
     # biomass
-    cost_biomass = rng.normal(100, 25, npts) * prod['biomass'] / prod['total'] # @irenaBiomassPowerGeneration2012
+    if not variable or variable == 'cost_biomass':
+        cost_biomass = rng.normal(100, 25, npts) * prod['biomass'] / prod['total'] # @irenaBiomassPowerGeneration2012
+    else:
+        cost_biomass = rng.normal(100, 0, npts) * prod['biomass'] / prod['total'] # @irenaBiomassPowerGeneration2012
     cost += cost_biomass
 
     # hydro
-    cost_hydro = rng.normal(80, 20, npts) * prod['hydro'] / prod['total'] # @Hydropower
+    if not variable:
+        cost_hydro = rng.normal(80, 20, npts) * prod['hydro'] / prod['total'] # @Hydropower
+    else:
+        cost_hydro = rng.normal(80, 0, npts) * prod['hydro'] / prod['total'] # @Hydropower
     cost += cost_hydro
 
     # storage
     if storage_tech == 'uphes':
-        cost_storage, cost_storage_noarb = co.cost_storage_uphes(npts, caps['storage_energy'], caps['storage_power'], prod['total'], rng, price, to_storage)
+        cost_storage, cost_storage_noarb = co.cost_storage_uphes(npts, caps['storage_energy'], caps['storage_power'], prod['total'], rng, price, to_storage, variable=variable)
     elif storage_tech == 'hydrogen':
-        cost_storage = co.cost_storage_hydrogen(npts, caps['storage_energy'], caps['storage_power'], prod['total'], rng)
+        cost_storage = co.cost_storage_hydrogen(npts, caps['storage_energy'], caps['storage_power'], prod['total'], rng, variable=variable)
     else:
         throw(SimulationError('{} is not currently a valid storage technology. Add a function for calculating its cost.'))
     cost += cost_storage
@@ -358,10 +404,10 @@ def calc_cost(caps, prod, fraction_lost, storage_tech, rng, price, to_storage):
     return cost, dif_from_arbitrage
 
 
-def monte_carlo(npts, caps, processes=3):
+def monte_carlo(npts, caps, processes=3, variable=None):
     results = []
     with multiprocessing.Pool(processes) as pool:
-        raw_results = [pool.apply_async(simulation, args=(caps,)) for i in range(npts)]
+        raw_results = [pool.apply_async(simulation, args=(caps, variable)) for i in range(npts)]
         for r in raw_results:
             try:
                 results.append(r.get(timeout=90))
@@ -843,13 +889,157 @@ def wind_penetration_cost(run_simulation=True):
     plt.show()
 
 
+def sensitivity_analysis(run_simulation=True):
+    variables_split = {
+        'Renewables - 100 GWh storage': ['capital_solar_ee', 'variable_solar', 'grid_investments', 'wind_on',
+            'wind_off', 'capital_power', 'capital_energy', 'variable_storage', 'cost_biomass', 'demand',
+            'price', 'transmission_losses', 'capfac_wind', 'capfac_solar', 'biomass', 'construct_time uphes'],
+        'Renewables with oil shale and pyrolysis gas': ['co2_os', 'os o_and_m', 'co2_credits', 'construction_os',
+            'trans_storage', 'ccs_avg', 'co2_gas', 'gas o_and_m', 'construction_gas', 'capital_solar_ee',
+            'variable_solar', 'grid_investments', 'wind_on', 'wind_off', 'cost_biomass', 'demand', 'price',
+            'transmission_losses', 'capfac_gas_avg', 'capfac_os_avg', 'capfac_wind', 'capfac_solar', 'biomass',
+            'construct_time os', 'construct_time gas'],
+        'Renewables, nuclear, and pyrolysis gas': ['co2_credits', 'trans_storage', 'ccs_avg', 'co2_gas',
+            'gas o_and_m', 'construction_gas', 'capital_solar_ee', 'variable_solar', 'grid_investments',
+            'wind_on', 'wind_off', 'cost_biomass', 'demand', 'price', 'transmission_losses',
+            'capfac_gas_avg', 'capfac_wind', 'capfac_solar', 'biomass', 'capital_smr', 'fuel nuclear',
+            'o_and_m nuclear', 'capfac_nuclear_avg', 'construct_time nuclear']
+    }
+
+    variables_all = ['co2_os', 'os o_and_m', 'co2_credits', 'construction_os', 'trans_storage',
+        'ccs_avg', 'co2_gas', 'gas o_and_m', 'construction_gas', 'capital_solar_ee',
+        'variable_solar', 'grid_investments', 'wind_on', 'wind_off', 'capital_power',
+        'capital_energy', 'variable_storage', 'cost_biomass', 'demand', 'price', 'transmission_losses',
+        'capfac_gas_avg', 'capfac_os_avg', 'capfac_wind', 'capfac_solar', 'biomass', 'capital_smr',
+        'fuel nuclear', 'o_and_m nuclear', 'capfac_nuclear_avg']
+
+    variables_plot = ['co2_os', 'os o_and_m', 'co2_credits', 'construction_os', 'ccs_avg',
+        'trans_storage', 'co2_gas', 'gas o_and_m', 'construction_gas', 'capital_smr', 'fuel nuclear',
+        'o_and_m nuclear', 'wind_off', 'capital_power', 'capital_energy', 'variable_storage',
+        'cost_biomass', 'demand', 'price', 'grid_investments', 'transmission_losses',
+        'capfac_gas_avg', 'capfac_os_avg', 'capfac_wind', 'capfac_nuclear_avg', 'biomass']
+
+    labels_dict = {
+        'co2_os': 'OS CO2 emission factor',
+        'os o_and_m': 'OS operating costs',
+        'co2_credits': 'CO2 credit price',
+        'construction_os': 'OS construction cost',
+        'trans_storage': 'CO2 transport and storage',
+        'ccs_avg': 'CCS cost',
+        'co2_gas': 'Gas CO2 emission factor',
+        'gas o_and_m': 'Gas operating costs',
+        'construction_gas': 'Gas construction cost',
+        'grid_investments': 'Grid investments',
+        'wind_off': 'Wind LCOE',
+        'capital_power': 'Storage power cost',
+        'capital_energy': 'Storage cost per energy',
+        'variable_storage': 'Storage operating costs',
+        'cost_biomass': 'Biomass LCOE',
+        'demand': 'Electricity demand',
+        'price': 'Electricity price',
+        'transmission_losses': 'Transmission losses',
+        'capfac_gas_avg': 'Gas capacity factor',
+        'capfac_os_avg': 'OS capacity factor',
+        'capfac_wind': 'Wind capacity factor',
+        'biomass': 'Biomass capacity',
+        'capital_smr': 'Nuclear construction cost',
+        'fuel nuclear': 'Nuclear fuel cost',
+        'o_and_m nuclear': 'Nuclear operating costs',
+        'capfac_nuclear_avg': 'Nuclear capacity factor'
+    }
+    # labels = ['\n'.join(wrap(labels_dict[v], 20)) for v in variables_plot]
+    labels = [labels_dict[v] for v in variables_plot]
+
+    with open('systems.json', 'r') as file:
+        systems = json.load(file) # all capacities in MW, except for storage_energy which has units of MWh
+
+    fig, axs = plt.subplots(2, 1, figsize=(11,10))
+
+    systems_to_run = ['Renewables - 100 GWh storage', 'Renewables with oil shale and pyrolysis gas', 'Renewables, nuclear, and pyrolysis gas']
+    colors = ['#005e0d', '#dc961b', '#15d4c9']
+    bar_width = 0.8 / len(systems_to_run)
+    legend_handles = []
+    for isys, system_name in enumerate(systems_to_run):
+        caps = {}
+        for s in systems:
+            if s['name'] == system_name:
+                caps = s
+
+        outfile = 'data/sensitivity_analysis.csv'
+        nruns = 100
+
+        print('\n{}'.format(caps['name']))
+
+        if run_simulation:
+            if not os.path.exists(outfile):
+                with open(outfile, 'a+') as f:
+                    f.seek(0)
+                    f.truncate()
+                    f.write('System;Variable name;Total production;Total surplus;Total shortage;Total unused;Net surplus;Average cost;Difference from arbitrage\n')
+
+            for var in variables_split[system_name]:
+                print('    {}'.format(var))
+                total_production, total_excess, total_shortage, total_unused, net_surplus, cost, dif_from_arbitrage = monte_carlo(nruns, caps, variable=var)
+
+                with open(outfile, 'a+') as f:
+                    for i in range(total_production.shape[0]):
+                        f.write(';'.join([caps['name'], var, str(total_production[i]), str(total_excess[i]), str(total_shortage[i]), str(total_unused[i]), str(net_surplus[i]), str(cost[i]), str(dif_from_arbitrage[i])]) + '\n')
+
+        # creating plot
+        df = pd.read_csv(outfile, delimiter=';')
+
+        x = np.arange(len(variables_plot)) - 0.4 + bar_width * isys + 0.5 * bar_width
+
+        metrics = ['Average cost', 'Net surplus']
+        for i, metric in enumerate(metrics):
+            for j, var in enumerate(variables_plot):
+                metric_median = 0
+                metric_median = df.loc[(df['System'] == system_name) & (df['Variable name'] == var), metric].median()
+                if (df.loc[(df['System'] == system_name) & (df['Variable name'] == var), metric] - metric_median).max() > 1e-5:
+                    if metric == 'Average cost':
+                        bp = axs[i].boxplot(df.loc[(df['System'] == system_name) & (df['Variable name'] == var), metric] - metric_median, positions=[x[j]], whis=[5,95], widths=0.8*bar_width, patch_artist=True, showfliers=False)
+                    else:
+                        bp = axs[i].boxplot((df.loc[(df['System'] == system_name) & (df['Variable name'] == var), metric] - metric_median) / 1000, positions=[x[j]], whis=[5,95], widths=0.8*bar_width, patch_artist=True, showfliers=False)
+
+                    for element in ['boxes', 'whiskers', 'fliers', 'means', 'caps']:
+                        plt.setp(bp[element], color=colors[isys])
+
+                    for patch in bp['boxes']:
+                        patch.set(facecolor=colors[isys])
+
+                    plt.setp(bp['medians'], color='white')
+                    plt.setp(bp['whiskers'], linewidth=2.0)
+
+        legend_handles.append(matplotlib.patches.Patch(color=colors[isys], label='\n'.join(wrap(systems_to_run[isys], 20))))
+
+    x_ticks = np.arange(len(variables_plot))
+
+    axs[0].plot([-2, 50], [0, 0], color='grey', linewidth=0.5, alpha=0.6)
+    axs[1].plot([-2, 50], [0, 0], color='grey', linewidth=0.5, alpha=0.6)
+
+    axs[0].set_ylabel('Cost (EUR / MWh)')
+    axs[1].set_ylabel('Net surplus (GWh)')
+    axs[0].set_xlim([-0.5, len(variables_plot) + 0.5])
+    axs[1].set_xlim([-0.5, len(variables_plot) + 0.5])
+    axs[0].set_xticks(x_ticks)
+    axs[1].set_xticks(x_ticks)
+    axs[0].set_xticklabels([])
+    axs[-1].set_xticklabels(labels, rotation=90)
+    axs[1].legend(handles=legend_handles, frameon=False, fontsize=11)
+    plt.subplots_adjust(bottom=0.25)
+    plt.tight_layout()
+    plt.savefig('figures/sensitivity_analysis', dpi=400)
+    plt.show()
+
+
 if __name__ == '__main__':
     # find_demand_coefficients()
     # find_wind_coefficients()
     # find_price_coefficients()
-    single_sim(show_plot=False, plot_example=True)
+    # single_sim(show_plot=False, plot_example=True)
     # storage_effect(run_simulation=False)
     # compare_systems(run_simulation=False)
     # wind_penetration_cost(run_simulation=False)
     # surplus_duration_curve(run_simulation=False)
     # demand_duration_curve(run_simulation=False)
+    sensitivity_analysis(run_simulation=False)

@@ -7,25 +7,51 @@ import pandas as pd
 DISC_RATE = 0.09 # from economic analysis in KliimaRITA report
 USD_TO_EUR = 0.876 # OECD data, 2020
 
-def cost_os(npts, cap, annual_prod, rng, credits=True):
+def cost_os(npts, cap, annual_prod, rng, variable=None, credits=True):
     if cap == 0:
         return 0, 0, 0
 
     capture_level = 0.9
-    co2_os = rng.normal(0.930, 0.060, npts) # tCO2 / MWh, assuming a new oil shale plant with an efficiency of about 43%
-    o_and_m = rng.normal(20, 2.5, npts) # EUR / MWh our estimate of the variable cost of producing electricity in an oil shale power plant. We cannot use actual data because Eesti Energia does not publish its production cost. @vabariigivalitsusEestiElektrimajanduseArengukava2006
+    if not variable or variable == 'co2_os':
+        co2_os = rng.normal(0.930, 0.060, npts) # tCO2 / MWh, assuming a new oil shale plant with an efficiency of about 43%
+    else:
+        co2_os = rng.normal(0.930, 0, npts) # tCO2 / MWh, assuming a new oil shale plant with an efficiency of about 43%
+
+    if not variable or variable == 'os o_and_m':
+        o_and_m = rng.normal(20, 2.5, npts) # EUR / MWh our estimate of the variable cost of producing electricity in an oil shale power plant. We cannot use actual data because Eesti Energia does not publish its production cost. @vabariigivalitsusEestiElektrimajanduseArengukava2006
+    else:
+        o_and_m = rng.normal(20, 0, npts)
+
     if credits:
-        co2_credits = rng.normal(40, 15, npts) # cost of the CO2 credits, EUR/tonn CO2
+        if not variable or variable == 'co2_credits':
+            co2_credits = rng.normal(40, 15, npts) # cost of the CO2 credits, EUR/tonn CO2
+        else:
+            co2_credits = rng.normal(40, 0, npts) # cost of the CO2 credits, EUR/tonn CO2
     else:
         co2_credits = 0
 
     lifespan_os = 35 # years, @jamesCostPerformanceBaseline2019 uses 30 years, but @cuiQuantifyingOperationalLifetimes2019 indicate that often lifetimes are longer (although plant renovations are probably needed)
     construct_time = 4 # years, based on construction time for Auvere oil shale plant, IEA also has data showing 4 years @ieaAveragePowerGeneration2019
-    construction_os = rng.normal(1.87e6, 0.15*1.87e6, npts) # EUR / MW, based on construction cost and capacity of Auvere plant, also excluding assumed interest during construction
 
-    trans_storage = rng.normal(25, 5, npts) # EUR/tCO2, estimated cost of transportation and storage. Based on estimates from @metzIPCCSpecialReport2005; @godecPotentialIssuesCosts2017; @hendriksGlobalCarbonDioxide2002; @zepCostsCO2Storage2011
-    ccs_avg = rng.normal(63, 10, npts) + trans_storage # EUR/tCO2, estimated cost of capture is based on more than 100 literature estimates, *** kontrollida, mis ole eluiga nendes artiklites
-    ccs_best = rng.normal(37, 10, npts) + trans_storage # EUR/tCO2, this estimate includes only next-generation CCS technologies, which have the potential to have a lower cost
+    if not variable or variable == 'construction_os':
+        construction_os = rng.normal(1.87e6, 0.15*1.87e6, npts) # EUR / MW, based on construction cost and capacity of Auvere plant, also excluding assumed interest during construction
+    else:
+        construction_os = rng.normal(1.87e6, 0, npts)
+
+    if not variable or variable == 'trans_storage':
+        trans_storage = rng.normal(25, 5, npts) # EUR/tCO2, estimated cost of transportation and storage. Based on estimates from @metzIPCCSpecialReport2005; @godecPotentialIssuesCosts2017; @hendriksGlobalCarbonDioxide2002; @zepCostsCO2Storage2011
+    else:
+        trans_storage = rng.normal(25, 0, npts)
+
+    if not variable or variable == 'ccs_avg':
+        ccs_avg = rng.normal(63, 10, npts) + trans_storage # EUR/tCO2, estimated cost of capture is based on more than 100 literature estimates, *** kontrollida, mis ole eluiga nendes artiklites
+    else:
+        ccs_avg = rng.normal(63, 0, npts) + trans_storage
+
+    if not variable or variable == 'ccs_best':
+        ccs_best = rng.normal(37, 10, npts) + trans_storage # EUR/tCO2, this estimate includes only next-generation CCS technologies, which have the potential to have a lower cost
+    else:
+        ccs_best = rng.normal(37, 0, npts) + trans_storage
 
     cost_construction = construction_os * cap / construct_time # the initial investment is not discounted, as discussed by @laiLevelizedCostElectricity2017
     for i in range(1, construct_time):
@@ -45,22 +71,49 @@ def cost_os(npts, cap, annual_prod, rng, credits=True):
     os_ccs_best = os_ccs_best / production_os + ccs_best * capture_level * co2_os
     return os_noccs, os_ccs_avg, os_ccs_best
 
-def cost_os_gas(npts, cap, annual_prod, rng):
+def cost_os_gas(npts, cap, annual_prod, rng, variable=None):
     if cap == 0:
         return 0, 0, 0
 
     capture_level = 0.9
-    co2_gas = rng.normal(0.2, 0.060, npts) # tCO2 / MWh, @siirdeEstimationCarbonEmission2011
-    o_and_m = rng.normal(10, 2.5, npts) # EUR / MWh our estimate of the variable cost of producing electricity in a shale gas power plant. We used the values for an oil shale fired plant as a starting point and subtracted the fuel cost (since shale gas is a byproduct)
-    co2_credits = rng.normal(40, 15, npts) # cost of the CO2 credits, EUR/tonn CO2
+
+    if not variable or variable == 'co2_gas':
+        co2_gas = rng.normal(0.2, 0.060, npts) # tCO2 / MWh, @siirdeEstimationCarbonEmission2011
+    else:
+        co2_gas = rng.normal(0.2, 0, npts)
+
+    if not variable or variable == 'gas o_and_m':
+        o_and_m = rng.normal(10, 2.5, npts) # EUR / MWh our estimate of the variable cost of producing electricity in a shale gas power plant. We used the values for an oil shale fired plant as a starting point and subtracted the fuel cost (since shale gas is a byproduct)
+    else:
+        o_and_m = rng.normal(10, 0, npts)
+
+    if not variable or variable == 'co2_credits':
+        co2_credits = rng.normal(40, 15, npts) # cost of the CO2 credits, EUR/tonn CO2
+    else:
+        co2_credits = rng.normal(40, 0, npts)
 
     lifespan_gas = 35 # years, @jamesCostPerformanceBaseline2019 uses 30 years, but @cuiQuantifyingOperationalLifetimes2019 indicate that often lifetimes are longer (although plant renovations are probably needed)
     construct_time = 3 # years, based on construction time for VKG's gas plant finished in 2015, @virukeemiagruppAastaraamat20152015
-    construction_gas = rng.normal(1.6e6, 0.2*1.6e6, npts) # EUR / MW, we expect that the cost for a shale gas plant will be somewhat lower than that of the Auvere plant
 
-    trans_storage = rng.normal(25, 5, npts) # EUR/tCO2, estimated cost of transportation and storage. Based on estimates from @metzIPCCSpecialReport2005; @godecPotentialIssuesCosts2017; @hendriksGlobalCarbonDioxide2002; @zepCostsCO2Storage2011
-    ccs_avg = rng.normal(63, 10, npts) + trans_storage # EUR/tCO2, estimated cost of capture is based on more than 100 literature estimates, *** kontrollida, mis ole eluiga nendes artiklites
-    ccs_best = rng.normal(37, 10, npts) + trans_storage # EUR/tCO2, this estimate includes only next-generation CCS technologies, which have the potential to have a lower cost
+    if not variable or variable == 'construction_gas':
+        construction_gas = rng.normal(1.6e6, 0.2*1.6e6, npts) # EUR / MW, we expect that the cost for a shale gas plant will be somewhat lower than that of the Auvere plant
+    else:
+        construction_gas = rng.normal(1.6e6, 0, npts)
+
+    if not variable or variable == 'trans_storage':
+        trans_storage = rng.normal(25, 5, npts) # EUR/tCO2, estimated cost of transportation and storage. Based on estimates from @metzIPCCSpecialReport2005; @godecPotentialIssuesCosts2017; @hendriksGlobalCarbonDioxide2002; @zepCostsCO2Storage2011
+    else:
+        trans_storage = rng.normal(25, 0, npts)
+
+    if not variable or variable == 'ccs_avg':
+        ccs_avg = rng.normal(63, 10, npts) + trans_storage # EUR/tCO2, estimated cost of capture is based on more than 100 literature estimates, *** kontrollida, mis ole eluiga nendes artiklites
+    else:
+        ccs_avg = rng.normal(63, 0, npts) + trans_storage
+
+    if not variable or variable == 'ccs_best':
+        ccs_best = rng.normal(37, 10, npts) + trans_storage # EUR/tCO2, this estimate includes only next-generation CCS technologies, which have the potential to have a lower cost
+    else:
+        ccs_best = rng.normal(37, 0, npts) + trans_storage
 
     cost_construction = construction_gas * cap / construct_time # the initial investment is not discounted, as discussed by @laiLevelizedCostElectricity2017
     for i in range(1, construct_time):
@@ -80,7 +133,7 @@ def cost_os_gas(npts, cap, annual_prod, rng):
     gas_ccs_best = gas_ccs_best / production_gas + ccs_best * capture_level * co2_gas
     return gas_noccs, gas_ccs_avg, gas_ccs_best
 
-def cost_biomass(npts, cap, annual_prod, rng):
+def cost_biomass(npts, cap, annual_prod, rng, variable=None):
     if cap == 0:
         return 0, 0, 0
 
@@ -123,15 +176,26 @@ def cost_biomass(npts, cap, annual_prod, rng):
     bio_ccs_best = bio_ccs_best / production_bio + ccs_best * capture_level * co2_bio
     return bio_noccs, bio_ccs_avg, bio_ccs_best
 
-def cost_solar(npts, cap, annual_prod, rng, include_grid_cost=True):
+def cost_solar(npts, cap, annual_prod, rng, variable=None, include_grid_cost=True):
     lifespan_solar = 25 # years
-    capital_solar_ee = rng.lognormal(7.09, 0.16, npts) * 1000 * USD_TO_EUR # EUR/MW, @irenaRenewablePowerGeneration2020 pg 76
-    variable_solar = rng.normal(17.8, 1, npts) * 1000 * USD_TO_EUR # EUR/MW/year, @irenaRenewablePowerGeneration2020 pg 81
+
+    if not variable or variable == 'capital_solar_ee':
+        capital_solar_ee = rng.lognormal(7.09, 0.16, npts) * 1000 * USD_TO_EUR # EUR/MW, @irenaRenewablePowerGeneration2020 pg 76
+    else:
+        capital_solar_ee = rng.lognormal(7.09, 0, npts) * 1000 * USD_TO_EUR
+
+    if not variable or variable == 'variable_solar':
+        variable_solar = rng.normal(17.8, 1, npts) * 1000 * USD_TO_EUR # EUR/MW/year, @irenaRenewablePowerGeneration2020 pg 81
+    else:
+        variable_solar = rng.normal(17.8, 0, npts) * 1000 * USD_TO_EUR
 
     # estimate of additional grid costs (see @ueckerdtSystemLCOEWhat2013)
     existing_solar = 40 # MW
     grid_lifespan = 45 # years
-    grid_investments = rng.normal(60, 25, npts) # EUR/kW, assumed to be half the value given for wind in @holttinenImpactsLargeAmounts2011 because solar provides more predictable energy (according to @ueckerdtSystemLCOEWhat2013)
+    if not variable or variable == 'grid_investments':
+        grid_investments = rng.normal(60, 25, npts) # EUR/kW, assumed to be half the value given for wind in @holttinenImpactsLargeAmounts2011 because solar provides more predictable energy (according to @ueckerdtSystemLCOEWhat2013)
+    else:
+        grid_investments = rng.normal(60, 0, npts)
     grid_investments[np.where(grid_investments < 0)] = 0
     capital_grid = grid_investments * 1000 * (cap - existing_solar) # any necessary grid improvements have already been made for existing solar installations
 
@@ -148,22 +212,28 @@ def cost_solar(npts, cap, annual_prod, rng, include_grid_cost=True):
     solar_ee = cost_solar / production_solar
     return solar_ee
 
-def cost_wind_on(npts, cap, annual_prod, fraction_unused, rng):
+def cost_wind_on(npts, cap, annual_prod, fraction_unused, rng, variable=None):
     # wind onshore, @irenaRenewablePowerGeneration2019
     if cap == 0:
         return 0
 
-    wind_on = rng.lognormal(3.69803076, 0.26079461, npts) / (1 - fraction_unused) * USD_TO_EUR
+    if not variable or variable == 'wind_on':
+        wind_on = rng.lognormal(3.69803076, 0.26079461, npts) / (1 - fraction_unused) * USD_TO_EUR
+    else:
+        wind_on = rng.lognormal(3.69803076, 0, npts) / (1 - fraction_unused) * USD_TO_EUR
     return wind_on
 
-def cost_wind_off(npts, cap, annual_prod, fraction_unused, rng, include_grid_cost=True):
+def cost_wind_off(npts, cap, annual_prod, fraction_unused, rng, variable=None, include_grid_cost=True):
     # Wind offshore, @irenaRenewablePowerGeneration2019
     if cap == 0:
         return 0
 
     # estimate of additional grid costs (see @ueckerdtSystemLCOEWhat2013)
     grid_lifespan = 45 # years
-    grid_investments = rng.normal(125, 50, npts) # EUR/kW, @holttinenImpactsLargeAmounts2011
+    if not variable or variable == 'grid_investments':
+        grid_investments = rng.normal(125, 50, npts) # EUR/kW, @holttinenImpactsLargeAmounts2011
+    else:
+        grid_investments = rng.normal(125, 0, npts)
     grid_investments[np.where(grid_investments < 0)] = 0
     capital_cost = grid_investments * 1000 * cap
     production_wind = 0
@@ -171,11 +241,14 @@ def cost_wind_off(npts, cap, annual_prod, fraction_unused, rng, include_grid_cos
         production_wind += annual_prod / (1 + DISC_RATE)**i
     cost_grid = capital_cost / production_wind
 
-    wind_off = rng.lognormal(4.49690421, 0.37057528, npts) / (1 - fraction_unused) * USD_TO_EUR
+    if not variable or variable == 'wind_off':
+        wind_off = rng.lognormal(4.49690421, 0.37057528, npts) / (1 - fraction_unused) * USD_TO_EUR
+    else:
+        wind_off = rng.lognormal(4.49690421, 0, npts) / (1 - fraction_unused) * USD_TO_EUR
     wind_off += cost_grid
     return wind_off
 
-def cost_nuclear(npts, cap, annual_prod, rng):
+def cost_nuclear(npts, cap, annual_prod, rng, variable=None):
     if cap == 0:
         return 0
 
@@ -183,10 +256,19 @@ def cost_nuclear(npts, cap, annual_prod, rng):
     # construct_time = 7 # years, conventional reactor, @ieaWorldEnergyOutlook2006 (see Figure 13.12)
     construct_time = 3 # years, small modular reactor, @abdullaExpertAssessmentsCost2013
     # capital_conv = rng.lognormal(8.3, 0.4, npts) * 1000 # 2020 EUR/MW, conventional reactor, @dhaeseleerSynthesisEconomicsNuclear2013, @loveringHistoricalConstructionCosts2016, @worldnuclearassociationEconomicsNuclearPower
-    capital_smr = rng.lognormal(8.39, 0.4, npts) * 1000 # 2020 EUR/MW, small modular reactor, @abdullaExpertAssessmentsCost2013; @kuznetsovCurrentStatusTechnical2011; @vegelEconomicEvaluationSmall2017
-    fuel = rng.normal(6, 0.75, npts) * (596.2 / 584.6) # 2020 EUR/MWh @dhaeseleerSynthesisEconomicsNuclear2013 (see also @NuclearPowerEconomics and @rodriguez-penalongaAnalysisCostsSpent2019), CEPCI index used to convert from 2012 to 2020 EUR
+    if not variable or variable == 'capital_smr':
+        capital_smr = rng.lognormal(8.39, 0.4, npts) * 1000 # 2020 EUR/MW, small modular reactor, @abdullaExpertAssessmentsCost2013; @kuznetsovCurrentStatusTechnical2011; @vegelEconomicEvaluationSmall2017
+    else:
+        capital_smr = rng.lognormal(8.39, 0, npts) * 1000
+    if not variable or variable == 'fuel nuclear':
+        fuel = rng.normal(6, 0.75, npts) * (596.2 / 584.6) # 2020 EUR/MWh @dhaeseleerSynthesisEconomicsNuclear2013 (see also @NuclearPowerEconomics and @rodriguez-penalongaAnalysisCostsSpent2019), CEPCI index used to convert from 2012 to 2020 EUR
+    else:
+        fuel = rng.normal(6, 0, npts) * (596.2 / 584.6)
     # the above estimate for fuel costs is for the entire fuel life cycle, including waste disposal
-    o_and_m = rng.normal(10, 3.5, npts) * (596.2 / 584.6) # 2020 EUR/MWh @dhaeseleerSynthesisEconomicsNuclear2013 (see also @oecdNuclearElectricityGeneration2003), CEPCI index used to convert from 2012 to 2020 EUR
+    if not variable or variable == 'o_and_m nuclear':
+        o_and_m = rng.normal(10, 3.5, npts) * (596.2 / 584.6) # 2020 EUR/MWh @dhaeseleerSynthesisEconomicsNuclear2013 (see also @oecdNuclearElectricityGeneration2003), CEPCI index used to convert from 2012 to 2020 EUR
+    else:
+        o_and_m = rng.normal(10, 0, npts) * (596.2 / 584.6)
     # according to @oecdNuclearElectricityGeneration2003 decommissioning costs are included in the cost of producing electricity, at least in OECD countries, and so here we consider that they are included in the operating costs
     variable_nuclear = fuel + o_and_m
 
@@ -200,7 +282,7 @@ def cost_nuclear(npts, cap, annual_prod, rng):
     nuclear = cost_nuclear / production_nuclear
     return nuclear
 
-def cost_storage_uphes(npts, energy_cap, power_cap, annual_prod, rng, price, to_storage):
+def cost_storage_uphes(npts, energy_cap, power_cap, annual_prod, rng, price, to_storage, variable=None):
     # underground pumped hydro storage
     if (energy_cap == 0) or (power_cap == 0):
         return 0, 0
@@ -215,11 +297,20 @@ def cost_storage_uphes(npts, energy_cap, power_cap, annual_prod, rng, price, to_
     scaling_factor_power = 0.4 # @kapilaDevelopmentTechnoeconomicModels2017
     scale_energy = (6000 / energy_cap)**(1 - scaling_factor_energy)
     scale_power = (500 / power_cap)**(1 - scaling_factor_power)
-    capital_power = rng.normal(1200, 200, npts) * 1000 # 2020 EUR/MW, @kapilaDevelopmentTechnoeconomicModels2017; @guoLifeCycleSustainability2020
-    capital_energy = rng.normal(30, 7, npts) * 1000 # 2020 EUR/MWh, @kapilaDevelopmentTechnoeconomicModels2017; @guoLifeCycleSustainability2020
+    if not variable or variable == 'capital_power':
+        capital_power = rng.normal(1200, 200, npts) * 1000 # 2020 EUR/MW, @kapilaDevelopmentTechnoeconomicModels2017; @guoLifeCycleSustainability2020
+    else:
+        capital_power = rng.normal(1200, 0, npts) * 1000
+    if not variable or variable == 'capital_energy':
+        capital_energy = rng.normal(30, 7, npts) * 1000 # 2020 EUR/MWh, @kapilaDevelopmentTechnoeconomicModels2017; @guoLifeCycleSustainability2020
+    else:
+        capital_energy = rng.normal(30, 0, npts) * 1000
     capital_storage = scale_energy * capital_energy * energy_cap + scale_power * capital_power * power_cap # 2020 EUR
     labor_costs = 0.25 * power_cap * 1400 * 12 * 1.33 # number of employees @paidipatiWorkforceDevelopmentHydropower2017, but using typical Estonian salary
-    variable_storage = (0.02 * capital_storage + labor_costs) * rng.normal(1, 0.05, npts) # 2020 EUR operating and maintenance costs.
+    if not variable or variable == 'variable_storage':
+        variable_storage = (0.02 * capital_storage + labor_costs) * rng.normal(1, 0.05, npts) # 2020 EUR operating and maintenance costs.
+    else:
+        variable_storage = (0.02 * capital_storage + labor_costs)
 
     # potential revenue from energy arbitrage
     arbitrage = np.sum(price * to_storage) * time_step / 3600
@@ -239,7 +330,7 @@ def cost_storage_uphes(npts, energy_cap, power_cap, annual_prod, rng, price, to_
     storage_noarb = cost_storage_noarb / production
     return storage, storage_noarb
 
-def cost_storage_hydrogen(npts, energy_cap, power_cap, annual_prod, rng):
+def cost_storage_hydrogen(npts, energy_cap, power_cap, annual_prod, rng, variable=None):
     # hydrogen storage
     if (energy_cap == 0) or (power_cap == 0):
         return 0
@@ -251,11 +342,23 @@ def cost_storage_hydrogen(npts, energy_cap, power_cap, annual_prod, rng):
     construct_time = 1 # years
 
     # main cost components: fuel cell, electrolyzer, and hydrogen storage tank @sanghaiTechnoEconomicAnalysisHydrogen2013
-    capital_fuel_cell = rng.normal(2900, 650, npts) * 1000 # 2020 EUR/MW,
-    capital_electrolyzer = rng.normal(2700, 1600, npts) * 1000 # 2020 EUR/MW,
-    capital_tank = rng.normal(27, 14, npts) * 1000 # 2020 EUR/MWh,
+    if not variable or variable == 'capital_fuel_cell':
+        capital_fuel_cell = rng.normal(2900, 650, npts) * 1000 # 2020 EUR/MW,
+    else:
+        capital_fuel_cell = rng.normal(2900, 0, npts) * 1000
+    if not variable or variable == 'capital_electrolyzer':
+        capital_electrolyzer = rng.normal(2700, 1600, npts) * 1000 # 2020 EUR/MW,
+    else:
+        capital_electrolyzer = rng.normal(2700, 0, npts) * 1000
+    if not variable or variable == 'capital_tank':
+        capital_tank = rng.normal(27, 14, npts) * 1000 # 2020 EUR/MWh,
+    else:
+        capital_tank = rng.normal(27, 0, npts) * 1000
     capital_storage = capital_fuel_cell * power_cap + capital_electrolyzer * power_cap + capital_tank * energy_cap # 2020 EUR
-    variable_storage = (34.14 * power_cap + 83.34 * power_cap + 0.035 * energy_cap) * rng.normal(1, 0.1, npts) # 2020 EUR operating and maintenance costs. @parissisIntegrationWindHydrogen2011
+    if not variable or variable == 'variable_storage hydrogen':
+        variable_storage = (34.14 * power_cap + 83.34 * power_cap + 0.035 * energy_cap) * rng.normal(1, 0.1, npts) # 2020 EUR operating and maintenance costs. @parissisIntegrationWindHydrogen2011
+    else:
+        variable_storage = (34.14 * power_cap + 83.34 * power_cap + 0.035 * energy_cap)
 
     cost_storage = capital_storage / construct_time # the initial investment is not discounted, as discussed by @laiLevelizedCostElectricity2017
     for i in range(1, construct_time):
