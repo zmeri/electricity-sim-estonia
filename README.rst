@@ -136,4 +136,4 @@ This project is licensed under the GNU General Public License v3.0
 .. _IRENA: https://www.irena.org/publications/2020/Jun/Renewable-Power-Costs-in-2019
 .. _`our article`: https://osf.io/rq5kp
 .. _`Ueckerdt et al. (2013)`: https://doi.org/10.1016/j.energy.2013.10.072
-.. _`references.json`: https://github.com/zmeri/electricity-sim-estonia/references.json
+.. _`references.json`: https://github.com/zmeri/electricity-sim-estonia/blob/master/references.json
