@@ -131,7 +131,7 @@ License
 This project is licensed under the GNU General Public License v3.0
 
 .. _2050: https://www.riigiteataja.ee/akt/315052021012
-.. _`"Comparison of the most likely low-emission electricity production systems in Estonia"`: https://osf.io/rq5kp
+.. _`"Comparison of the most likely low-emission electricity production systems in Estonia"`: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0261780
 .. _idct: https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.idct.html
 .. _IRENA: https://www.irena.org/publications/2020/Jun/Renewable-Power-Costs-in-2019
 .. _`our article`: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0261780
