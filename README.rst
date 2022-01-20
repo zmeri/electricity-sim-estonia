@@ -85,7 +85,7 @@ The levelized cost of a nuclear plant with a small modular reactor is estimated 
 *  Mean operating and maintenance costs = `10 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L269>`_ EUR/MWh
 *  Mean fuel costs (including disposal) = `6 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L264>`_ EUR/MWh
 *  Plant lifetime = `60 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L255>`_ years
-*  Construction time = `7 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L256>`_ years
+*  Construction time = `3 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L257>`_ years
 *  Mean overnight construction cost = `4402.82 <https://github.com/zmeri/electricity-sim-estonia/blob/master/cost_models.py#L260>`_ EUR/MW
 
 Underground pumped hydro storage
@@ -134,6 +134,6 @@ This project is licensed under the GNU General Public License v3.0
 .. _`"Comparison of the most likely low-emission electricity production systems in Estonia"`: https://osf.io/rq5kp
 .. _idct: https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.idct.html
 .. _IRENA: https://www.irena.org/publications/2020/Jun/Renewable-Power-Costs-in-2019
-.. _`our article`: https://osf.io/rq5kp
+.. _`our article`: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0261780
 .. _`Ueckerdt et al. (2013)`: https://doi.org/10.1016/j.energy.2013.10.072
 .. _`references.json`: https://github.com/zmeri/electricity-sim-estonia/blob/master/references.json
